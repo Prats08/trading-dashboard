@@ -13,47 +13,10 @@
       <h1>Trading Master <span class="sub">Portfolio &amp; Accounts</span></h1>
     </div>
     <div class="meta">
-      <span class="conn" id="conn-status" title="Editing requires a GitHub token">
-        <span class="live-dot dot-off" id="conn-dot"></span><span id="conn-label">Read-only</span>
-      </span>
-      <button id="connect-btn" class="btn-ghost">Connect</button>
       <span><span class="live-dot"></span><span id="last-updated">—</span></span>
       <button id="refresh-btn">Refresh</button>
     </div>
   </header>
-
-  <!-- Connect panel (GitHub token for editing) -->
-  <div id="connect-panel" class="connect-panel" hidden>
-    <div class="connect-card">
-      <h3>Connect GitHub to edit</h3>
-      <p class="hint">
-        Adding or removing tickers writes to <code id="repo-path">memory/portfolios.json</code> in your
-        repo, which GitHub requires you to authenticate for. Paste a
-        <strong>fine-grained personal access token</strong> scoped to this repo with
-        <strong>Contents: Read and write</strong>. Your token is stored
-        <strong>only in this browser</strong> (localStorage) and is sent directly to
-        api.github.com — never to any third party. Viewing the dashboard needs no token.
-      </p>
-      <label class="field">
-        <span>Repository <span class="muted-small">(owner/repo)</span></span>
-        <input id="repo-input" placeholder="Prats08/yoda-trading-master" autocomplete="off" spellcheck="false" />
-      </label>
-      <label class="field">
-        <span>Fine-grained token <span class="muted-small">(github_pat_…)</span></span>
-        <input id="token-input" type="password" placeholder="github_pat_…" autocomplete="off" spellcheck="false" />
-      </label>
-      <div class="connect-actions">
-        <button id="token-save" class="btn-primary">Save &amp; connect</button>
-        <button id="token-clear" class="btn-ghost">Disconnect</button>
-        <button id="connect-cancel" class="btn-ghost">Close</button>
-        <span id="connect-msg" class="muted-small"></span>
-      </div>
-      <p class="hint tiny">
-        Create one at GitHub → Settings → Developer settings → Fine-grained tokens.
-        Limit it to a single repository and to the Contents permission. Set a short expiry.
-      </p>
-    </div>
-  </div>
 
   <nav class="tabs">
     <button class="tab active" data-tab="portfolios">Portfolios</button>
@@ -65,20 +28,10 @@
       <h2>Portfolios</h2>
       <p class="hint">
         Three books: the daily-analysis <strong>Stock</strong> and <strong>Options</strong> portfolios,
-        plus the weekly-screened <strong>Watchlist</strong>. Add or remove tickers below — changes commit
-        straight to <code>memory/portfolios.json</code>. Note: the Options and Watchlist books are
-        rebuilt by the automated Saturday review, so manual edits there may be overwritten that day.
+        plus the weekly-screened <strong>Watchlist</strong>. This view is read-only — tickers are
+        managed by the trading system (the weekly review and the <code>add_ticker</code>/<code>remove_ticker</code>
+        CLIs), and this page reflects the latest published <code>memory/portfolios.json</code>.
       </p>
-      <div class="add-ticker">
-        <select id="book-select" title="Which book to edit">
-          <option value="stock">Stock</option>
-          <option value="options">Options</option>
-          <option value="watchlist">Watchlist</option>
-        </select>
-        <input id="ticker-input" placeholder="e.g. TSLA" maxlength="8" autocomplete="off" spellcheck="false" />
-        <button id="add-ticker-btn" class="btn-primary">Add ticker</button>
-        <span id="ticker-msg" class="muted-small"></span>
-      </div>
       <div id="portfolios-list">Loading…</div>
     </section>
 

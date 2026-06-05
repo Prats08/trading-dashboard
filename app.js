@@ -1,199 +1,26 @@
 'use strict';
 
-// ---------- config ----------
-const DEFAULT_REPO = 'Prats08/yoda-trading-master';
-const PORTFOLIOS_PATH = 'memory/portfolios.json';
-const LS_TOKEN = 'tm_gh_token';
-const LS_REPO = 'tm_gh_repo';
-const SYMBOL_RE = /^[A-Z][A-Z.\-]{0,7}$/;            // mirrors scripts/serve_dashboard.py
-const EDITABLE_BOOKS = ['stock', 'options', 'watchlist'];
-const AUTO_REBUILT = new Set(['options', 'watchlist']); // rebuilt by the weekly review
+// Read-only dashboard. Data is published to ./data/*.json by the deploy workflow;
+// the page just fetches and renders it. No tokens, no writes.
+
+const STATE = { portfolios: {}, accounts: null };
 const BOOK_LABELS = { stock: 'Stock', options: 'Options', watchlist: 'Watchlist' };
+const AUTO_REBUILT = new Set(['options', 'watchlist']); // rebuilt by the weekly review
 
-const STATE = {
-  portfolios: {},   // { book: { tickers: [...] } }
-  accounts: null,   // accounts.json
-  sha: null,        // blob SHA of portfolios.json (for Contents API writes)
-};
-
-// ---------- token / connection ----------
-function getToken() { return localStorage.getItem(LS_TOKEN) || ''; }
-function getRepo() { return localStorage.getItem(LS_REPO) || DEFAULT_REPO; }
-function isConnected() { return !!getToken(); }
-
-function renderConnection() {
-  const dot = document.getElementById('conn-dot');
-  const label = document.getElementById('conn-label');
-  if (isConnected()) {
-    dot.classList.remove('dot-off');
-    label.textContent = 'Editing enabled';
-    document.getElementById('conn-status').title = `Editing ${getRepo()}`;
-  } else {
-    dot.classList.add('dot-off');
-    label.textContent = 'Read-only';
-    document.getElementById('conn-status').title = 'Connect a GitHub token to edit';
-  }
-}
-
-function openConnect() {
-  document.getElementById('repo-input').value = getRepo();
-  document.getElementById('token-input').value = '';
-  document.getElementById('connect-msg').textContent = '';
-  document.getElementById('connect-panel').hidden = false;
-}
-function closeConnect() { document.getElementById('connect-panel').hidden = true; }
-
-async function saveToken() {
-  const repo = (document.getElementById('repo-input').value || DEFAULT_REPO).trim().replace(/^\/+|\/+$/g, '');
-  const token = (document.getElementById('token-input').value || '').trim();
-  const msg = document.getElementById('connect-msg');
-  if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) { msg.textContent = 'Repo must be owner/repo.'; return; }
-  if (!token) { msg.textContent = 'Paste a token.'; return; }
-  msg.textContent = 'Verifying…';
-  // Validate by reading portfolios.json — confirms token + repo + Contents access.
-  const res = await ghGetPortfolios(repo, token);
-  if (!res.ok) {
-    msg.textContent = res.error || 'Could not verify token.';
-    return;
-  }
-  localStorage.setItem(LS_TOKEN, token);
-  localStorage.setItem(LS_REPO, repo);
-  STATE.portfolios = normalizePortfolios(res.json);
-  STATE.sha = res.sha;
-  renderConnection();
-  renderPortfolios();
-  closeConnect();
-}
-
-function clearToken() {
-  localStorage.removeItem(LS_TOKEN);
-  renderConnection();
-  document.getElementById('connect-msg').textContent = 'Disconnected.';
-}
-
-// ---------- GitHub Contents API ----------
-function ghHeaders(token) {
-  return {
-    'Authorization': `Bearer ${token}`,
-    'Accept': 'application/vnd.github+json',
-    'X-GitHub-Api-Version': '2022-11-28',
-  };
-}
-
-// GET memory/portfolios.json → { ok, json, sha } (or { ok:false, error })
-async function ghGetPortfolios(repo, token) {
-  const url = `https://api.github.com/repos/${repo}/contents/${PORTFOLIOS_PATH}`;
-  let r;
-  try {
-    r = await fetch(url + '?ts=' + Date.now(), { headers: ghHeaders(token), cache: 'no-store' });
-  } catch (e) {
-    return { ok: false, error: 'Network error reaching GitHub.' };
-  }
-  if (r.status === 401) return { ok: false, error: 'Bad token (401). Check the token and its Contents permission.' };
-  if (r.status === 403) return { ok: false, error: 'Forbidden (403). Token lacks Contents access to this repo.' };
-  if (r.status === 404) return { ok: false, error: 'Not found (404). Check the repo name and that portfolios.json exists.' };
-  if (!r.ok) return { ok: false, error: `GitHub error ${r.status}.` };
-  const data = await r.json();
-  let json;
-  try { json = JSON.parse(b64DecodeUtf8(data.content || '')); }
-  catch (e) { return { ok: false, error: 'portfolios.json is not valid JSON.' }; }
-  return { ok: true, json, sha: data.sha };
-}
-
-// PUT memory/portfolios.json with a full new object → { ok, sha } (or error)
-async function ghPutPortfolios(repo, token, obj, sha, message) {
-  const url = `https://api.github.com/repos/${repo}/contents/${PORTFOLIOS_PATH}`;
-  const body = {
-    message,
-    content: b64EncodeUtf8(JSON.stringify(obj, null, 2)), // match memory._write_json (indent=2)
-    sha,
-  };
-  let r;
-  try {
-    r = await fetch(url, { method: 'PUT', headers: ghHeaders(token), body: JSON.stringify(body) });
-  } catch (e) {
-    return { ok: false, error: 'Network error reaching GitHub.' };
-  }
-  if (r.status === 409) return { ok: false, conflict: true, error: 'Conflict (the file changed). Retrying…' };
-  if (!r.ok) {
-    let detail = '';
-    try { detail = (await r.json()).message || ''; } catch (e) {}
-    return { ok: false, error: `GitHub error ${r.status}${detail ? ': ' + detail : ''}.` };
-  }
-  const data = await r.json();
-  return { ok: true, sha: data.content && data.content.sha };
-}
-
-// ---------- add / remove ----------
-async function mutate(book, symbol, add) {
-  const msg = document.getElementById('ticker-msg');
-  const sym = (symbol || '').toUpperCase().trim();
-  if (add && !SYMBOL_RE.test(sym)) {
-    showMsg(msg, `Invalid symbol — 1-8 chars, A-Z, . or -`, true);
-    return;
-  }
-  if (!isConnected()) {
-    showMsg(msg, 'Connect a GitHub token to edit.', true);
-    openConnect();
-    return;
-  }
-  const repo = getRepo(), token = getToken();
-  showMsg(msg, add ? `Adding ${sym}…` : `Removing ${sym}…`);
-
-  const apply = async () => {
-    const got = await ghGetPortfolios(repo, token);
-    if (!got.ok) return got;
-    const obj = got.json || {};
-    const cur = (obj[book] && obj[book].tickers) ? obj[book].tickers.slice()
-              : Array.isArray(obj[book]) ? obj[book].slice() : [];
-    const set = new Set(cur.map(t => String(t).toUpperCase()));
-    if (add) {
-      if (set.has(sym)) return { ok: false, soft: true, error: `${sym} already in ${BOOK_LABELS[book]}.` };
-      set.add(sym);
-    } else {
-      if (!set.has(sym)) return { ok: false, soft: true, error: `${sym} not in ${BOOK_LABELS[book]}.` };
-      set.delete(sym);
-    }
-    obj[book] = { tickers: Array.from(set).sort() };  // mirror save_portfolio: sorted+deduped
-    const verb = add ? 'add' : 'remove';
-    const put = await ghPutPortfolios(repo, token, obj, got.sha,
-      `web: ${verb} ${sym} ${add ? 'to' : 'from'} ${book}`);
-    if (put.ok) { STATE.portfolios = normalizePortfolios(obj); STATE.sha = put.sha; }
-    return put;
-  };
-
-  let res = await apply();
-  if (res && res.conflict) res = await apply(); // retry once on SHA conflict
-  if (res.ok) {
-    showMsg(msg, add ? `Added ${sym} to ${BOOK_LABELS[book]}` : `Removed ${sym} from ${BOOK_LABELS[book]}`);
-    document.getElementById('ticker-input').value = '';
-    renderPortfolios();
-  } else {
-    showMsg(msg, res.error || 'Failed.', !res.soft);
-  }
-}
-
-// ---------- load + render ----------
+// ---------- load ----------
 async function loadAll() {
-  const accounts = await fetchJSON('./data/accounts.json', null);
+  const [portfolios, accounts] = await Promise.all([
+    fetchJSON('./data/portfolios.json', {}),
+    fetchJSON('./data/accounts.json', null),
+  ]);
+  STATE.portfolios = normalizePortfolios(portfolios);
   STATE.accounts = accounts;
-
-  // Portfolios: canonical via API when connected (also grabs the SHA), else the
-  // public baked copy that the Pages deploy publishes.
-  if (isConnected()) {
-    const got = await ghGetPortfolios(getRepo(), getToken());
-    if (got.ok) { STATE.portfolios = normalizePortfolios(got.json); STATE.sha = got.sha; }
-    else { STATE.portfolios = normalizePortfolios(await fetchJSON('./data/portfolios.json', {})); }
-  } else {
-    STATE.portfolios = normalizePortfolios(await fetchJSON('./data/portfolios.json', {}));
-  }
 
   const stamp = (accounts && accounts.generated_at)
     ? 'Accounts as of ' + fmtTime(accounts.generated_at)
     : 'Loaded ' + new Date().toLocaleString();
   document.getElementById('last-updated').textContent = stamp;
 
-  renderConnection();
   renderPortfolios();
   renderAccounts();
 }
@@ -215,6 +42,7 @@ function normalizePortfolios(raw) {
   return out;
 }
 
+// ---------- portfolios (read-only) ----------
 function renderPortfolios() {
   const el = document.getElementById('portfolios-list');
   const order = ['stock', 'options', 'watchlist'];
@@ -227,11 +55,7 @@ function renderPortfolios() {
   }
   el.innerHTML = names.map(name => {
     const tickers = (STATE.portfolios[name].tickers || []);
-    const editable = EDITABLE_BOOKS.includes(name);
-    const chips = tickers.map(t => `
-      <span class="ticker-chip">${escapeHtml(t)}${editable
-        ? `<button class="ticker-x" data-book="${name}" data-remove="${escapeHtml(t)}" title="Remove ${escapeHtml(t)}">&times;</button>`
-        : ''}</span>`).join('');
+    const chips = tickers.map(t => `<span class="ticker-chip">${escapeHtml(t)}</span>`).join('');
     const autoBadge = AUTO_REBUILT.has(name)
       ? `<span class="badge-auto" title="Rebuilt by the Saturday weekly review">auto-rebuilt weekly</span>` : '';
     return `
@@ -248,6 +72,7 @@ function renderPortfolios() {
   }).join('');
 }
 
+// ---------- accounts ----------
 function renderAccounts() {
   const summaryEl = document.getElementById('accounts-summary');
   const listEl = document.getElementById('accounts-list');
@@ -375,15 +200,6 @@ function signClass(n) { const v = Number(n); return v > 0 ? 'pos' : v < 0 ? 'neg
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
-function showMsg(el, text, isError = false) {
-  if (!el) return;
-  el.textContent = text;
-  el.style.color = isError ? 'var(--neg)' : 'var(--text-muted)';
-  setTimeout(() => { if (el.textContent === text) el.textContent = ''; }, 4500);
-}
-// UTF-8-safe base64 (GitHub Contents API content is base64)
-function b64EncodeUtf8(str) { return btoa(unescape(encodeURIComponent(str))); }
-function b64DecodeUtf8(b64) { return decodeURIComponent(escape(atob((b64 || '').replace(/\n/g, '')))); }
 
 // ---------- wiring ----------
 document.querySelectorAll('.tab').forEach(t => {
@@ -395,22 +211,5 @@ document.querySelectorAll('.tab').forEach(t => {
   });
 });
 document.getElementById('refresh-btn').addEventListener('click', loadAll);
-document.getElementById('connect-btn').addEventListener('click', openConnect);
-document.getElementById('connect-cancel').addEventListener('click', closeConnect);
-document.getElementById('token-save').addEventListener('click', saveToken);
-document.getElementById('token-clear').addEventListener('click', clearToken);
 
-const tickerInput = document.getElementById('ticker-input');
-const bookSelect = document.getElementById('book-select');
-document.getElementById('add-ticker-btn').addEventListener('click', () => mutate(bookSelect.value, tickerInput.value, true));
-tickerInput.addEventListener('keydown', e => { if (e.key === 'Enter') mutate(bookSelect.value, tickerInput.value, true); });
-document.addEventListener('click', e => {
-  const btn = e.target.closest('.ticker-x');
-  if (!btn) return;
-  const sym = btn.getAttribute('data-remove');
-  const book = btn.getAttribute('data-book');
-  if (sym && confirm(`Remove ${sym} from ${BOOK_LABELS[book] || book}?`)) mutate(book, sym, false);
-});
-
-renderConnection();
 loadAll();
