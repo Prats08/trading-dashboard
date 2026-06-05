@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trading Master — Portfolio & Accounts</title>
+  <title>Trading Master — Portfolio &amp; Accounts</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,29 +19,41 @@
   </header>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="portfolios">Portfolios</button>
+    <button class="tab active" data-tab="stock">Stock</button>
+    <button class="tab" data-tab="options">Options</button>
+    <button class="tab" data-tab="watchlist">Watchlist</button>
     <button class="tab" data-tab="accounts">Alpaca accounts</button>
   </nav>
 
   <main>
-    <section id="portfolios" class="panel active">
-      <h2>Portfolios</h2>
-      <p class="hint">
-        Three books: the daily-analysis <strong>Stock</strong> and <strong>Options</strong> portfolios,
-        plus the weekly-screened <strong>Watchlist</strong>. This view is read-only — tickers are
-        managed by the trading system (the weekly review and the <code>add_ticker</code>/<code>remove_ticker</code>
-        CLIs), and this page reflects the latest published <code>memory/portfolios.json</code>.
-      </p>
-      <div id="portfolios-list">Loading…</div>
+    <section id="stock" class="panel active">
+      <h2>Stock portfolio</h2>
+      <p class="hint">Latest floor decision per ticker — action, conviction, goal and price targets.
+        Click a column header to sort, type to filter, and click a row to expand the full thesis. Read-only.</p>
+      <div class="toolbar" id="toolbar-stock"></div>
+      <div class="table-wrap"><div id="table-stock" data-book="stock">Loading…</div></div>
+    </section>
+
+    <section id="options" class="panel">
+      <h2>Options book</h2>
+      <p class="hint">Latest published options play per ticker — the <strong>structure</strong> (type),
+        direction, conviction and defined risk. Click a row to see the legs, thesis and IV. Read-only.</p>
+      <div class="toolbar" id="toolbar-options"></div>
+      <div class="table-wrap"><div id="table-options" data-book="options">Loading…</div></div>
+    </section>
+
+    <section id="watchlist" class="panel">
+      <h2>Watchlist</h2>
+      <p class="hint">The weekly-screened universe (~200 names). Most aren't analyzed daily, so decision
+        columns are blank until a name is picked up — sector and any recent call still show.</p>
+      <div class="toolbar" id="toolbar-watchlist"></div>
+      <div class="table-wrap"><div id="table-watchlist" data-book="watchlist">Loading…</div></div>
     </section>
 
     <section id="accounts" class="panel">
       <h2>Alpaca paper accounts</h2>
-      <p class="hint">
-        Live snapshot of each paper book — equity, day P&amp;L, cash, buying power, open positions and
-        working orders. Refreshed a couple times a day by the <code>account_snapshot</code> routine.
-        The Options book trades on the same Alpaca account as the Conservative fund.
-      </p>
+      <p class="hint">Live snapshot of each paper book — equity, day P&amp;L, cash, buying power, open
+        positions and working orders. The Options book trades on the same account as the Conservative fund.</p>
       <div id="accounts-summary"></div>
       <div id="accounts-list">Loading…</div>
     </section>
