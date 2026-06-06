@@ -300,7 +300,7 @@ function renderAccounts() {
   renderEquityChart(acc.equity_history);
 }
 
-// Total equity over time vs SPY (rebased to the same starting capital).
+// Each fund's equity over time vs SPY (rebased to the same starting capital).
 function renderEquityChart(hist) {
   const card = document.getElementById('equity-chart-card');
   const cap = document.getElementById('equity-chart-caption');
@@ -308,30 +308,59 @@ function renderEquityChart(hist) {
   if (!card || !canvas) return;
   if (equityChart) { equityChart.destroy(); equityChart = null; }
 
-  const port = hist && Array.isArray(hist.portfolio) ? hist.portfolio : null;
-  if (typeof Chart === 'undefined' || !port || port.length < 2) { card.hidden = true; return; }
+  const byFund = hist && hist.by_fund ? hist.by_fund : null;
+  if (typeof Chart === 'undefined' || !byFund || Object.keys(byFund).length === 0) {
+    card.hidden = true; return;
+  }
+
+  const fundIds = Object.keys(byFund);
+  const n = fundIds[0] ? byFund[fundIds[0]].length : 0;
+  if (n < 2) { card.hidden = true; return; }
+
+  // Find first funded value across all funds (sum them for a total base).
+  let baseIdx = -1;
+  for (let i = 0; i < n; i++) {
+    const vals = fundIds.map(fid => byFund[fid][i]);
+    if (vals.every(v => v > 0)) { baseIdx = i; break; }
+  }
+  if (baseIdx < 0) { card.hidden = true; return; }
+  const base = fundIds.map(fid => byFund[fid][baseIdx]).reduce((a, b) => a + b, 0);
+  if (!base) { card.hidden = true; return; }
   card.hidden = false;
 
-  const datasets = [{
-    label: 'Portfolio', data: port,
-    borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.14)',
-    fill: true, tension: 0.25, pointRadius: 0, borderWidth: 2,
-  }];
+  // Fund colors: balanced cyan, aggressive red, options amber/gold
+  const fundColors = {
+    balanced:     { borderColor: '#22d3ee', bgColor: 'rgba(34,211,238,0.15)' },
+    aggressive:   { borderColor: '#ef4444', bgColor: 'rgba(239,68,68,0.15)' },
+    options:      { borderColor: '#f59e0b', bgColor: 'rgba(245,158,11,0.15)' },
+  };
+
+  const datasets = fundIds.map(fid => {
+    const colors = fundColors[fid] || { borderColor: '#808080', bgColor: 'rgba(128,128,128,0.1)' };
+    return {
+      label: fid.charAt(0).toUpperCase() + fid.slice(1), data: byFund[fid],
+      borderColor: colors.borderColor, backgroundColor: colors.bgColor,
+      fill: true, tension: 0.25, pointRadius: 0, borderWidth: 1.5, order: 10,
+    };
+  });
 
   let benchRet = null;
   const bench = hist.benchmark;
-  if (bench && Array.isArray(bench.close) && bench.close.length === port.length && bench.close[0]) {
-    const c0 = bench.close[0];
+  if (bench && Array.isArray(bench.close) && bench.close.length === n && bench.close[baseIdx]) {
+    const c0 = bench.close[baseIdx];
+    const spyStart = 100_000;  // rebased to $100k baseline per fund
     datasets.push({
       label: (bench.symbol || 'SPY') + ' (same start)',
-      data: bench.close.map(c => port[0] * c / c0),  // growth of the same capital in SPY
+      data: bench.close.map(c => spyStart * c / c0),  // growth of $100k in SPY
       borderColor: '#a1a1aa', borderDash: [5, 4],
-      fill: false, tension: 0.25, pointRadius: 0, borderWidth: 1.5,
+      fill: false, tension: 0.25, pointRadius: 0, borderWidth: 1.5, order: 5,
     });
     benchRet = bench.close[bench.close.length - 1] / c0 - 1;
   }
 
-  const portRet = port[port.length - 1] / port[0] - 1;
+  // Total portfolio return (sum of funds / base)
+  const portEnd = fundIds.map(fid => byFund[fid][n - 1]).reduce((a, b) => a + b, 0);
+  const portRet = portEnd / base - 1;
   const parts = [`<span class="${signClass(portRet)}">Portfolio ${fmtPct(portRet)}</span>`];
   if (benchRet != null) {
     parts.push(`<span class="muted-small">SPY ${fmtPct(benchRet)}</span>`);
