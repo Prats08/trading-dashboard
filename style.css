@@ -136,6 +136,18 @@ h3 { font-size: 15px; font-weight: 600; margin: 0 0 6px; }
   border-radius: 999px; padding: 4px 11px; font-family: var(--font-mono); font-size: 12.5px;
 }
 
+/* ACCOUNTS — equity chart */
+.chart-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 20px;
+}
+.chart-card[hidden] { display: none; }
+.chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.chart-head h3 { margin: 0; }
+.chart-caption { display: flex; gap: 14px; align-items: baseline; font-size: 13px; font-variant-numeric: tabular-nums; }
+.chart-box { position: relative; height: 300px; }
+.chart-card .muted-small { margin: 8px 0 0; }
+
 /* ACCOUNTS */
 #accounts-summary { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
 .summary-tile {

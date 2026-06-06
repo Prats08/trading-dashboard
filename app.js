@@ -6,6 +6,7 @@
 
 const STATE = { table: null, accounts: null };
 const BOOK_LABELS = { stock: 'Stock', options: 'Options', watchlist: 'Watchlist' };
+let equityChart = null;  // Chart.js instance for the Accounts equity curve
 
 // Per-book UI state (filter text, action filter, sort, expanded rows).
 const UI = {
@@ -295,6 +296,66 @@ function renderAccounts() {
   const order = ['conservative', 'balanced', 'aggressive', 'options'];
   const ids = order.filter(n => funds[n]).concat(Object.keys(funds).filter(n => !order.includes(n)));
   listEl.innerHTML = ids.map(id => renderAccountCard(id, funds[id], byAccount)).join('');
+
+  renderEquityChart(acc.equity_history);
+}
+
+// Total equity over time vs SPY (rebased to the same starting capital).
+function renderEquityChart(hist) {
+  const card = document.getElementById('equity-chart-card');
+  const cap = document.getElementById('equity-chart-caption');
+  const canvas = document.getElementById('equity-chart');
+  if (!card || !canvas) return;
+  if (equityChart) { equityChart.destroy(); equityChart = null; }
+
+  const port = hist && Array.isArray(hist.portfolio) ? hist.portfolio : null;
+  if (typeof Chart === 'undefined' || !port || port.length < 2) { card.hidden = true; return; }
+  card.hidden = false;
+
+  const datasets = [{
+    label: 'Portfolio', data: port,
+    borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.14)',
+    fill: true, tension: 0.25, pointRadius: 0, borderWidth: 2,
+  }];
+
+  let benchRet = null;
+  const bench = hist.benchmark;
+  if (bench && Array.isArray(bench.close) && bench.close.length === port.length && bench.close[0]) {
+    const c0 = bench.close[0];
+    datasets.push({
+      label: (bench.symbol || 'SPY') + ' (same start)',
+      data: bench.close.map(c => port[0] * c / c0),  // growth of the same capital in SPY
+      borderColor: '#a1a1aa', borderDash: [5, 4],
+      fill: false, tension: 0.25, pointRadius: 0, borderWidth: 1.5,
+    });
+    benchRet = bench.close[bench.close.length - 1] / c0 - 1;
+  }
+
+  const portRet = port[port.length - 1] / port[0] - 1;
+  const parts = [`<span class="${signClass(portRet)}">Portfolio ${fmtPct(portRet)}</span>`];
+  if (benchRet != null) {
+    parts.push(`<span class="muted-small">SPY ${fmtPct(benchRet)}</span>`);
+    const diff = portRet - benchRet;
+    parts.push(`<span class="${signClass(diff)}">${diff >= 0 ? '+' : ''}${(diff * 100).toFixed(1)} pts vs SPY</span>`);
+  }
+  cap.innerHTML = parts.join(' &middot; ');
+
+  equityChart = new Chart(canvas.getContext('2d'), {
+    type: 'line',
+    data: { labels: hist.timestamps, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: '#a1a1aa', boxWidth: 12, usePointStyle: true } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmtMoneyPlain(ctx.parsed.y)}` } },
+      },
+      scales: {
+        x: { ticks: { color: '#71717a', maxTicksLimit: 8, autoSkip: true }, grid: { color: 'rgba(63,63,70,0.35)' } },
+        y: { ticks: { color: '#71717a', callback: v => fmtMoneyShort(v) }, grid: { color: 'rgba(63,63,70,0.35)' } },
+      },
+    },
+  });
 }
 
 function renderAccountCard(id, f, byAccount) {
@@ -365,6 +426,18 @@ function fmtNum(n) {
   if (n == null || !Number.isFinite(Number(n))) return '—';
   return Number(n).toLocaleString(undefined, { maximumFractionDigits: 4 });
 }
+// Plain (non-HTML) money strings for chart tooltips/axes.
+function fmtMoneyPlain(n) {
+  if (!Number.isFinite(Number(n))) return '—';
+  return '$' + Number(n).toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+function fmtMoneyShort(n) {
+  const v = Number(n);
+  if (!Number.isFinite(v)) return '';
+  if (Math.abs(v) >= 1e6) return '$' + (v / 1e6).toFixed(2) + 'M';
+  if (Math.abs(v) >= 1e3) return '$' + Math.round(v / 1e3) + 'k';
+  return '$' + Math.round(v);
+}
 function fmtTime(iso) { try { return new Date(iso).toLocaleString(); } catch (e) { return iso; } }
 function signClass(n) { const v = Number(n); return v > 0 ? 'pos' : v < 0 ? 'neg' : ''; }
 function escapeHtml(s) {
@@ -378,6 +451,9 @@ document.querySelectorAll('.tab').forEach(t => {
     document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
     t.classList.add('active');
     document.getElementById(t.dataset.tab).classList.add('active');
+    // Chart.js can't measure a canvas whose panel was display:none at creation;
+    // resize once the Accounts panel is actually visible.
+    if (t.dataset.tab === 'accounts' && equityChart) equityChart.resize();
   });
 });
 document.getElementById('refresh-btn').addEventListener('click', loadAll);

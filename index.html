@@ -54,11 +54,21 @@
       <h2>Alpaca paper accounts</h2>
       <p class="hint">Live snapshot of each paper book — equity, day P&amp;L, cash, buying power, open
         positions and working orders. The Options book trades on the same account as the Conservative fund.</p>
+      <div id="equity-chart-card" class="chart-card" hidden>
+        <div class="chart-head">
+          <h3>Total equity vs S&amp;P 500</h3>
+          <div id="equity-chart-caption" class="chart-caption"></div>
+        </div>
+        <div class="chart-box"><canvas id="equity-chart"></canvas></div>
+        <p class="muted-small">Combined value of all paper accounts (shared accounts counted once),
+          versus the same starting capital invested in SPY.</p>
+      </div>
       <div id="accounts-summary"></div>
       <div id="accounts-list">Loading…</div>
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
