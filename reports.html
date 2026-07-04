@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading Master — Reports (last 30 days)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>try{if(localStorage.getItem('tm_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+  <script src="analytics.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <a class="back-link" href="index.html" title="Back to dashboard">←</a>
+      <div class="brand-logo">TM</div>
+      <h1>Trading Master <span class="sub">Reports</span></h1>
+    </div>
+    <div class="meta">
+      <span class="muted-small" id="reports-updated">—</span>
+      <button id="theme-btn" class="btn-ghost" title="Toggle light / dark">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel active">
+      <h2>Report archive <span class="sub">last 30 days</span></h2>
+      <p class="hint">Every daily report and weekly review from the last 30 days. Click
+        <strong>View</strong> to read a report inline, or <strong>Download</strong> to save the PDF.</p>
+      <div class="toolbar">
+        <input class="search" id="reports-search" placeholder="Filter by title or date…"
+               autocomplete="off" spellcheck="false" />
+        <div class="chips" id="reports-chips">
+          <button class="chip on" data-type="">All</button>
+          <button class="chip" data-type="weekly">Weekly review</button>
+          <button class="chip" data-type="daily">Daily report</button>
+        </div>
+        <span class="muted-small count" id="reports-count"></span>
+      </div>
+      <div id="reports-list">Loading…</div>
+    </section>
+  </main>
+
+  <!-- inline PDF viewer -->
+  <div id="pdf-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box">
+      <div class="modal-head">
+        <span class="modal-title" id="pdf-title">Report</span>
+        <span class="modal-actions">
+          <a id="pdf-download" class="btn-ghost" href="#" download>Download</a>
+          <button id="pdf-close" class="btn-ghost" data-close title="Close (Esc)">✕</button>
+        </span>
+      </div>
+      <iframe id="pdf-frame" title="Report PDF" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="ui.js"></script>
+  <script src="reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,2539 @@
+{
+  "generated_at": "2026-07-04T14:36:57.645363Z",
+  "days": [
+    {
+      "date": "2026-07-03",
+      "stock": [],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "conservative",
+          "ticker": "ORCL260717C00290000",
+          "side": "buy",
+          "intent": "exit",
+          "reason_code": "CONFLICTS_DECISION",
+          "reason": "floor decision for ORCL260717C00290000 is DONT_TRADE"
+        },
+        {
+          "fund": "options",
+          "ticker": "GE",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $19865 leaves no room under $19650 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "ILLIQUID",
+          "reason": "AMAT260710C00620000: OI 110 / vol 805 / spread 15% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "ORCL at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "ILLIQUID",
+          "reason": "MRVL260731C00300000: OI 950 / vol 686 / spread 16% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "CAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stock": [
+        {
+          "fund": "conservative",
+          "ticker": "ORCL260717C00260000",
+          "side": "sell",
+          "intent": "exit",
+          "qty": 2,
+          "limit_price": 0.02,
+          "notional": 0.04,
+          "conviction": 1,
+          "status": "rejected",
+          "outcome": "not_executed",
+          "rationale": "Floor DONT_TRADE conviction 1; 41% OTM with 15 days to expiry, near-certain worthless. Rotation candidate; closing to eliminate dead-weight exposure.",
+          "reasoning": {
+            "target_reasoning": "ORCL $260 call expiring July 17 \u2014 18 days. ORCL underlying at approximately $184 (per prior session data and event log; current pool has no ORCL-specific data). Strike is 41% above the underlying. ADX 17.31 confirmed chop on the option itself. RSI 2.34 reflects the option's own price collapse toward zero \u2014 standard mean-reversion logic does not apply to a deep-OTM expiring contract per prior coaching. Chart target $1.15 (nearest resistance per chart_target, carried verbatim) is the upside scenario only \u2014 not a forward fair value. Price targets set to current spot $0.06 as required positive non-null placeholders. Per weekly directive: 'ORCL calls (both strikes) \u2014 DONT_TRADE; close any residual premium to recover cash.' This is explicitly named in the weekly directive.",
+            "bullets": [
+              "ORCL $260 call \u2014 strike 41% above underlying with 18 days to expiry; near-certain expiration worthless",
+              "ADX 17.31 confirmed chop on option itself \u2014 chart is silent; RSI 2.34 reflects collapse toward zero, inapplicable for mean-reversion logic",
+              "Weekly directive explicitly names this instrument: DONT_TRADE; close residual premium to recover cash",
+              "No news pool, no fundamental data; nearest_support null means no structural floor between current price and zero"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "KO",
+          "side": "sell",
+          "intent": "exit",
+          "qty": 49,
+          "limit_price": 82.93,
+          "notional": 4063.76,
+          "conviction": 5,
+          "status": "rejected",
+          "outcome": "not_executed",
+          "rationale": "KO conviction 5 below rotation_max_conviction 6; flagged ROTATION CANDIDATE. Proceeds fund QQQ deployment to close 11.1% cash vs 5% ceiling gap.",
+          "reasoning": {
+            "target_reasoning": "Prior $83.05/$84.04 fair values revised modestly up \u2014 price $83.25 has now reached the prior 30d resistance zone at a fresh 52w high; the defensive breakout and +8.9% 1mo RS support a slight upward step to 30d $84.04 (52w high) and 90d $86. This is a range-position advance, not a large thesis change. Bull and bear tied: defensive-quality compounding (revenue +12.1%, EPS +17.8%, Berkshire anchor) vs. full valuation at the 52w high with the $14-20B IRS tail and a ~$95M June insider disposition cluster. Chart target $88.86 (measured-move extension, nearest_resistance null, carried verbatim) diverges above the fundamental targets \u2014 I weight fundamentals given rel_volume 0.44 (unconfirmed breakout) and the IRS overhang. INSIDER_BEARISH LOW confidence flag stands. Conviction 5 below the income threshold of 7 \u2014 HOLD.",
+            "bullets": [
+              "Forward P/E 23.90 with revenue +12.1% and EPS quarterly +17.8% aligned \u2014 positive operating leverage; 27.80% margin and 43.37% ROE confirm elite franchise quality; 2.61% yield",
+              "Consumer Defensive is the textbook stagflation beneficiary (core PCE 3.4%, CPI 4.2%); beta 0.35 provides insulation; FIFA World Cup 2026 is a summer volume tailwind",
+              "At the 52w high on rel_volume 0.44 \u2014 failed/unconfirmed breakout on near-absent participation; do not chase the high",
+              "IRS $14-20B transfer-pricing dispute is the dominant tail risk; ~$95M combined Chairman+Officer June disposition cluster (null types) leans INSIDER_BEARISH at LOW confidence",
+              "Stop $76.60 (8% house max); income hold at 3-4%; thesis breaks if IRS rules adversely or revenue decelerates below 8% two consecutive quarters"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "QQQ",
+          "side": "buy",
+          "intent": "add",
+          "qty": 14.0,
+          "limit_price": 712.65,
+          "notional": 9977.14,
+          "conviction": 5,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 14.0,
+          "filled_avg_price": 711.31,
+          "submitted_at": "2026-07-02T18:42:45.539471+00:00",
+          "rationale": "Parking ETF deployment: absorbs KO rotation proceeds plus excess cash above 5% ceiling. QQQ preferred per directive given confirmed 3mo AI/tech RS leadership in risk-on regime.",
+          "reasoning": {
+            "target_reasoning": "Prior $743/$780 fair values held \u2014 today's -2.02% to $710.54 is index-level volatility, not a thesis change. Bull and bear tied: durable +8.17% 3mo RS and the SpaceX Nasdaq-100 inclusion (~$4.3B inflows) vs. the Mag-7 $2.3T monthly drawdown, Burry short, and macd bearish cross. Chart target $719.00 (nearest resistance, carried verbatim) sits above spot \u2014 the near-term ceiling; 30d $743 toward the MA20/prior-range recovery; 90d $780 on AI-tech compounding if the cycle holds. Conviction 5 below the long_term threshold of 7 \u2014 HOLD; the vehicle trades on the rate/AI-rotation regime directly.",
+            "bullets": [
+              "3mo RS +8.17% vs SPY (significant, durable AI/tech leadership) despite the -4.67% 1mo pullback; the 3-month AI capex cycle has institutional backing",
+              "SpaceX Nasdaq-100 inclusion (~$4.3B est. passive inflows) is a date-certain mechanical catalyst; weak jobs (+57K) eases Fed-hike pressure, a modest multiple tailwind",
+              "Mag-7 $2.3T monthly market-cap loss and Burry's fresh short on NVDA/TSLA/AMAT (top holdings) plus a macd bearish cross with contracting histogram signal near-term component deterioration",
+              "Trailing P/E 32.62 at 81st percentile of range leaves little cushion; rel_volume 0.67 thin, momentum_score 35 \u2014 no near-term entry edge",
+              "Stop $683 (near structural support; widen for a long-term core hold); thesis breaks if 3+ Mag-7 names miss Q2 or core PCE re-accelerates above 4.5% with a Warsh hike signal"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": []
+    },
+    {
+      "date": "2026-07-01",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "KO",
+          "side": "sell",
+          "intent": "exit",
+          "qty": 61,
+          "limit_price": 81.34,
+          "notional": 4961.56,
+          "conviction": 5,
+          "status": "rejected",
+          "outcome": "not_executed",
+          "rationale": "Rotation candidate conviction 5 below rotation_max_conviction threshold; proceeds fund PANW and MU entries. Held 23 days, past min_holding_days.",
+          "reasoning": {
+            "target_reasoning": "Prior $83.05/$84.04 fair values held \u2014 thesis unchanged. Price $81.60 vs prior $82.60 (June 29 midday) is a modest pullback \u2014 a price move, not a thesis change. The Marriott global beverage partnership (July 1 announcement, fresh \u2014 Yahoo:InvestorsHub) is an incremental positive catalyst but not a thesis-change event. 30d $83.05 anchored to nearest resistance (current briefing nearest_resistance $83.05 \u2014 consistent across all prior sessions). 90d $84.04 toward the 52w high $84.04. Chart target $83.05 (nearest resistance, consistent with prior sessions \u2014 high-trust convergence with 30d). IRS dispute prevents BUY conviction at income threshold of 7. INSIDER_BEARISH LOW confidence (Chairman Quincey ~$55.4M + Officer Mann ~$40M June cluster, null types) is the primary monitoring flag. ADX 15.12 chop \u2014 chart is silent. Bull and bear tied; HOLD at conviction 5.",
+            "bullets": [
+              "Forward P/E 23.42x with revenue +12.1% and EPS quarterly +17.8% aligned \u2014 positive operating leverage confirmed; 27.80% profit margin and 43.37% ROE confirm franchise quality; Marriott global partnership (July 1, fresh) directly expands hotel distribution globally",
+              "2.61% dividend yield above income threshold; Berkshire Hathaway 400M-share anchor (9% of institutional float, confirmed in holders table) is the highest-quality long-term institutional endorsement",
+              "IRS $14-20B transfer-pricing dispute at federal appeals court \u2014 the dominant tail risk preventing a BUY conviction at income threshold 7; encouraging prior signals but outcome uncertain",
+              "INSIDER_BEARISH LOW confidence: Chairman Quincey ~$55.4M and Officer Mann ~$40M combined June cluster (null types) \u2014 per $50M+ escalation protocol; exercise-and-sale plausible but flagged",
+              "Stop $75.07 (8% house max from current $81.60); income hold; thesis breaks if IRS rules adversely or revenue decelerates below 8% for two consecutive quarters"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "PANW",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PANW floor conviction 6 < required 7"
+        },
+        {
+          "fund": "balanced",
+          "ticker": "MU",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "MU floor conviction 6 < required 7"
+        },
+        {
+          "fund": "options",
+          "ticker": "GE",
+          "reason_code": "ILLIQUID",
+          "reason": "GE260918C00380000: OI 831 / vol 7 / spread 7% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "NVDA at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "ILLIQUID",
+          "reason": "ADBE260724P00195000: OI 581 / vol 36 / spread 25% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "GLW",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "SPY",
+          "side": "sell",
+          "intent": "sweep",
+          "qty": 1.0,
+          "limit_price": 743.81,
+          "notional": 743.81,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 1.0,
+          "filled_avg_price": 747.45,
+          "submitted_at": "2026-06-30T19:11:00.672934+00:00",
+          "rationale": "Funding sell: plan needs $176 beyond free cash.",
+          "reasoning": {
+            "target_reasoning": "Prior $752/$775 fair values held \u2014 thesis unchanged; today's +1.31% to $738.52 from prior session $744.78 reflects near-term volatility, not a thesis change. The Iran de-escalation bounce is the near-term catalyst but does not change the multi-quarter fundamental picture. 30d $752 reflects a push through nearest resistance $746.25 and toward the 52w high zone; 90d $775 reflects gradual expansion if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest swing resistance above) is the immediate technical ceiling. Chart $746.25 sits below 30d $752 \u2014 modest divergence, directional agreement (up). Conviction 5 below long_term threshold of 7 \u2014 HOLD.",
+            "bullets": [
+              "US-Iran de-escalation (Yahoo:Stocktwits, fresh) reduces geopolitical tail risk and supports near-term SPY rally; improving labor market data approaching in holiday-shortened jobs week",
+              "Trailing P/E 26.45\u00d7 in a Goldilocks-adjacent environment (moderate growth, CPI decelerating from 4.2% peak hypothetically); MA50 $733.46 provides structural support",
+              "Core PCE 3.4% (CNBC, fresh) is the highest since October 2023 \u2014 this single data point prevents rate cuts and caps multiple expansion; Warsh Fed on hold explicitly",
+              "ADX 24.05 sub-25 with MACD contracting bearish cross and rel_volume 0.40 thin \u2014 no institutional conviction at current levels; consolidation mode appropriate",
+              "Stop $731.84 (nearest structural support, 0.9% below current); thesis breaks if CPI re-accelerates above 4.5% with explicit Warsh hike signal, or if leverage-driven liquidation cascade begins"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "CI",
+          "side": "buy",
+          "intent": "add",
+          "qty": 3.0,
+          "limit_price": 278.56,
+          "notional": 835.67,
+          "stop_loss": 269.0,
+          "take_profit": 330.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 3.0,
+          "filled_avg_price": 278.02,
+          "submitted_at": "2026-06-30T19:11:59.214165+00:00",
+          "rationale": "Floor conviction 7, BUY. Price $277.80 is in the $275-278 MA50 zone directive explicitly flagged for adding. Deepest managed-care dislocation at 8.38x forward, PEG 0.34. Brings weight to ~4%.",
+          "reasoning": {
+            "target_reasoning": "Prior $305/$330 fair values held \u2014 thesis intact (forward P/E 8.38x with EPS quarterly +25.0% is the deepest managed-care dislocation at 41st percentile of range). Price $280.42 vs prior $283.22 (prior pre-close June 25) \u2014 modest decline on rel_volume 0.26 (very thin), not a thesis change. Bull wins decisively on the valuation-and-growth combination with analyst rating 1.5 (Strong Buy). ADX 12.56 deep chop means no near-term technical edge \u2014 this is a fundamentals-driven 90-day hold. Chart_target_llm $282.79 (nearest resistance) is essentially at current price \u2014 the technical ceiling is at spot; 30d $305 and 90d $330 reflect the re-rating path above this ceiling. CEO $95.3M null-type cluster held at LOW confidence per established protocol. Per directive: maintain 2-3% rotation position, stop $269.",
+            "bullets": [
+              "Forward P/E 8.38x with EPS quarterly +25.0% \u2014 PEG 0.34 (quarterly basis, forward P/E 8.38/EPS growth 25.0%) is the deepest managed-care valuation dislocation at 41st percentile of 52w range",
+              "Analyst rating 1.5 (Strong Buy) \u2014 the highest conviction Street consensus in this session's batch; confirms institutional recognition of the dislocation",
+              "Healthcare defensive rotation (XLV +7.8% 5d per weekly directive) provides sector tailwind; beta 0.30 provides rate insulation; D/E 72.81 manageable for a health insurer",
+              "ADX 12.56 deep chop \u2014 no near-term technical edge; this is a fundamentals-driven 6+ month position; chart ceiling $282.79 essentially at current price, confirming patience is required",
+              "Stop $269 per directive (directive operative; house 8% from $280.42 = $257.99 \u2014 directive is tighter and operative); thesis breaks if medical cost ratios reverse at the July 30 print"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "PANW",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PANW floor conviction 6 < required 7"
+        },
+        {
+          "fund": "balanced",
+          "ticker": "MU",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "MU floor conviction 6 < required 7"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $20207 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "GE",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $20207 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "GE",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $20207 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "NVDA at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "ILLIQUID",
+          "reason": "ADBE260724P00195000: OI 568 / vol 6 / spread 9% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "GLW",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $20207 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "ILLIQUID",
+          "reason": "MCD260710P00267500: OI 119 / vol 3 / spread 12% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "NVDA at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "ILLIQUID",
+          "reason": "ADBE260724P00195000: OI 568 / vol 6 / spread 9% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "GLW",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-29",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "KO",
+          "side": "sell",
+          "intent": "trim",
+          "qty": 8,
+          "limit_price": 82.04,
+          "notional": 656.28,
+          "conviction": 5,
+          "status": "rejected",
+          "outcome": "not_executed",
+          "rationale": "KO conviction 5 is rotation candidate per pre-screen; trimming ~8 shares to fund CI add. Held >7 days, past min holding period.",
+          "reasoning": {
+            "target_reasoning": "Prior $83.05/$84.04 fair values held \u2014 thesis unchanged; price $82.60 vs prior $81.44 (June 26 session) is a modest advance. The IRS encouraging signals have already been reflected in the prior upward revision (June 24 session revised to $83.05/$84.04). No new thesis-changing catalyst in the current (malformed) pool beyond the IRS positive momentum already priced. 30d $83.05 anchored to nearest_resistance from the current briefing (consistent with prior sessions \u2014 the immediate technical ceiling). 90d $84.04 toward the 52w high recovery. Chart target $83.05 (nearest resistance, carried verbatim) aligns with 30d \u2014 high-trust near-term convergence. INSIDER_BEARISH LOW confidence (Chairman $55.36M + Mann $35.1M June cluster) is the primary monitoring flag. ADX 15.99 chop \u2014 the chart is silent. Income classification: 2.57% yield above threshold, consumer defensive, beta 0.35, large-cap franchise.",
+            "bullets": [
+              "Forward P/E 23.71x on 12.1% revenue growth and 17.8% EPS growth (positively aligned) \u2014 27.80% profit margin and 43.37% ROE confirm franchise quality; Berkshire Hathaway 400M-share anchor (9% of institutional float, confirmed in holder table) is the highest-quality long-term institutional endorsement",
+              "IRS $14-20B transfer-pricing dispute at federal appeals court \u2014 encouraging courtroom signals (event log June 26) reduce the immediate risk but do not eliminate it; an adverse ruling remains the dominant tail risk",
+              "RS +5.27% 1mo vs SPY (significant, above the 3% threshold) reflects defensive rotation in a 4.2% CPI tape; FIFA World Cup 2026 is a confirmed event-driven summer volume catalyst",
+              "INSIDER_BEARISH LOW confidence: Chairman Quincey ~$55.36M and Officer Mann ~$35.1M June cluster (null types) \u2014 per the $50M+ escalation protocol; exercise-and-sale plausible but flagged; ADX 15.99 chop with rel_volume 0.34 at 92nd percentile confirms no institutional conviction at these levels",
+              "Stop $76.00 (8% house max from current $82.60, reset from prior basis); thesis breaks if IRS rules adversely forcing immediate material cash payment, or revenue growth decelerates below 8%"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "CI",
+          "side": "buy",
+          "intent": "add",
+          "qty": 2.0,
+          "limit_price": 281.36,
+          "notional": 562.72,
+          "stop_loss": 269.0,
+          "take_profit": 330.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 280.64,
+          "submitted_at": "2026-06-29T17:41:52.401359+00:00",
+          "rationale": "CI conviction 7 BUY; deepest managed-care dislocation at 8.38x forward, PEG 0.34. Adding near $275-278 MA50 zone per directive. Funded by KO rotation.",
+          "reasoning": {
+            "target_reasoning": "Prior $305/$330 fair values held \u2014 thesis intact (forward P/E 8.38x with EPS quarterly +25.0% is the deepest managed-care dislocation at 41st percentile of range). Price $280.42 vs prior $283.22 (prior pre-close June 25) \u2014 modest decline on rel_volume 0.26 (very thin), not a thesis change. Bull wins decisively on the valuation-and-growth combination with analyst rating 1.5 (Strong Buy). ADX 12.56 deep chop means no near-term technical edge \u2014 this is a fundamentals-driven 90-day hold. Chart_target_llm $282.79 (nearest resistance) is essentially at current price \u2014 the technical ceiling is at spot; 30d $305 and 90d $330 reflect the re-rating path above this ceiling. CEO $95.3M null-type cluster held at LOW confidence per established protocol. Per directive: maintain 2-3% rotation position, stop $269.",
+            "bullets": [
+              "Forward P/E 8.38x with EPS quarterly +25.0% \u2014 PEG 0.34 (quarterly basis, forward P/E 8.38/EPS growth 25.0%) is the deepest managed-care valuation dislocation at 41st percentile of 52w range",
+              "Analyst rating 1.5 (Strong Buy) \u2014 the highest conviction Street consensus in this session's batch; confirms institutional recognition of the dislocation",
+              "Healthcare defensive rotation (XLV +7.8% 5d per weekly directive) provides sector tailwind; beta 0.30 provides rate insulation; D/E 72.81 manageable for a health insurer",
+              "ADX 12.56 deep chop \u2014 no near-term technical edge; this is a fundamentals-driven 6+ month position; chart ceiling $282.79 essentially at current price, confirming patience is required",
+              "Stop $269 per directive (directive operative; house 8% from $280.42 = $257.99 \u2014 directive is tighter and operative); thesis breaks if medical cost ratios reverse at the July 30 print"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $19817 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "GE",
+          "reason_code": "ILLIQUID",
+          "reason": "GE260918C00400000: OI 2848 / vol 4 / spread 10% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "NVDA at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $19817 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "GLW",
+          "reason_code": "PREMIUM_BUDGET",
+          "reason": "book premium-at-risk $21335 leaves no room under $19817 budget"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "ILLIQUID",
+          "reason": "MCD260710P00267500: OI 121 / vol 5 / spread 10% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-26",
+      "stock": [
+        {
+          "fund": "aggressive",
+          "ticker": "QQQ",
+          "side": "buy",
+          "intent": "add",
+          "qty": 1.0,
+          "limit_price": 713.56,
+          "notional": 713.56,
+          "conviction": 6,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 1.0,
+          "filled_avg_price": 711.49,
+          "submitted_at": "2026-06-26T16:09:31.821719+00:00",
+          "rationale": "Cash at 5.2% exceeds 5% max; deploying residual into default broad-market parking ETF per cash policy. Regime risk-on; QQQ is the growth-tilted parking vehicle matching mandate.",
+          "reasoning": {
+            "target_reasoning": "Bull wins on structural evidence: stacked bullish MA, ADX 22.89 confirmed real trend, and 3mo RS +11.74% (significant) vs. SPY support the durable AI/tech uptrend thesis. The MACD bearish cross and thin volume (rel_volume 0.50) are near-term consolidation signals, not reversals, within a confirmed trend. Setting initial fair values: 30d $750 reflects a modest push through the nearest resistance $746.16 toward the 52w high $748.65 and beyond; 90d $780 reflects continued Nasdaq-100 compounding if the AI capex cycle sustains at Goldilocks macro. Chart target $746.16 (nearest resistance, uptrend basis) aligns with 30d $750 \u2014 strong near-term convergence. The MACD bearish cross is the primary caution signal; Fed removing cutting bias is the medium-term constraint. Long_term classification appropriate for a broad index ETF. Conviction 6 \u2014 below the 7 threshold; HOLD.",
+            "bullets": [
+              "Stacked bullish MA (price > MA20 > MA50 > MA200) with ADX 22.89 confirmed real trend and 3mo RS +11.74% vs. SPY (significant) confirm the AI/tech uptrend thesis is intact",
+              "Goldilocks macro backdrop (moderate growth, controlled inflation per Zacks, fresh) and Iran peace deal risk-on rotation support Nasdaq-100 multiple stability",
+              "MACD bearish cross with contracting histogram and rel_volume 0.50 signal a near-term consolidation pause \u2014 not a reversal in a confirmed uptrend",
+              "Fed removing cutting bias in 4.2% CPI environment caps multiple expansion upside; 95th percentile range position limits near-term entry conviction",
+              "Stop $719.79 (nearest structural support per briefing, 2.4% below current); thesis breaks if RSI falls below 40 with MACD expanding bearish on volume above 1.5\u00d7 average"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "aggressive",
+          "ticker": "MU",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "SUB_MIN_QTY",
+          "reason": "MU buy notional $1180 is below one share at $1183.51"
+        },
+        {
+          "fund": "options",
+          "ticker": "GE",
+          "reason_code": "ILLIQUID",
+          "reason": "GE260918C00380000: OI 753 / vol 4 / spread 4% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "CAT",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "GLW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "ILLIQUID",
+          "reason": "MCD260702P00270000: OI 784 / vol 74 / spread 15% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "ILLIQUID",
+          "reason": "ADBE260724P00195000: OI 535 / vol 4 / spread 6% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "NKE",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "INTC",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "stock": [
+        {
+          "fund": "aggressive",
+          "ticker": "META",
+          "side": "buy",
+          "intent": "open",
+          "qty": 5.0,
+          "limit_price": 564.63,
+          "notional": 2823.13,
+          "stop_loss": 519.34,
+          "take_profit": 720.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 5.0,
+          "filled_avg_price": 546.4,
+          "submitted_at": "2026-06-25T19:21:10.886265+00:00",
+          "rationale": "Floor BUY conv 7; forward P/E 15.54x on 33.1% revenue growth, PEG 0.255, 15.6th percentile 52w range. Directive 6-7 band only; sized 3-4% per weekly guidance.",
+          "reasoning": {
+            "target_reasoning": "Prior $620/$720 fair values held \u2014 thesis unchanged; today essentially flat (+0.21%) from prior session $564.08. Forward P/E 15.54x on 33.1% revenue growth and 60.9% EPS quarterly growth = PEG 0.255 (quarterly basis) is the dominant valuation-dislocation thesis, confirmed by Iran-deal risk-on rotation explicitly targeting beaten-down mega-cap tech. RSI 31.24 approaching oversold at the 15.6th percentile \u2014 quant confirms MEAN_REVERSION_LONG at medium confidence. Chart target $587.38 (nearest resistance, carried verbatim) is the first technical ceiling; 30d $620 is the fundamental fair value extension; both point up. Olivan 10b5-1 pattern excluded per prior coaching \u2014 insider signal does not override. Anti-momentum guardrail not triggered (RSI 31.24 far below 75, momentum_score 15 far below 90). BUY on fundamental dislocation per active goal profile bias.",
+            "bullets": [
+              "Forward P/E 15.54x on 33.1% revenue growth and 60.9% EPS quarterly growth \u2014 PEG 0.255 is the most compelling large-cap growth-at-value in this session at the 15.6th percentile of the 52w range",
+              "$299 Meta Glasses launch (aggressive undercut of Snap $2,195) and Arena prediction-markets app confirm product diversification beyond advertising; 32.84% margin base is intact",
+              "RSI 31.24 approaching oversold with RSI trajectory turning \u2014 quant bounce candidate at range lows; Iran-deal risk-on rotation explicitly targets this setup",
+              "EU child-safety probe escalation is the live regulatory risk \u2014 a monitoring flag, not an immediate earnings impairment given the advertising platform's structural separation from safety concerns",
+              "Stop $519.34 (8% from prior entry basis); nearest structural support $560.05 is the downside risk level; thesis breaks if Q2 ad-revenue growth decelerates below 20%"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "QQQ",
+          "side": "buy",
+          "intent": "add",
+          "qty": 6.0,
+          "limit_price": 715.38,
+          "notional": 4292.27,
+          "conviction": 6,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 6.0,
+          "filled_avg_price": 713.71,
+          "submitted_at": "2026-06-25T19:21:10.916032+00:00",
+          "rationale": "Sweep residual idle cash above 5% ceiling into default parking ETF per mandate; QQQ floor HOLD conv 6, stacked-bullish MA, AI/tech uptrend intact.",
+          "reasoning": {
+            "target_reasoning": "Bull wins on structural evidence: stacked bullish MA, ADX 22.89 confirmed real trend, and 3mo RS +11.74% (significant) vs. SPY support the durable AI/tech uptrend thesis. The MACD bearish cross and thin volume (rel_volume 0.50) are near-term consolidation signals, not reversals, within a confirmed trend. Setting initial fair values: 30d $750 reflects a modest push through the nearest resistance $746.16 toward the 52w high $748.65 and beyond; 90d $780 reflects continued Nasdaq-100 compounding if the AI capex cycle sustains at Goldilocks macro. Chart target $746.16 (nearest resistance, uptrend basis) aligns with 30d $750 \u2014 strong near-term convergence. The MACD bearish cross is the primary caution signal; Fed removing cutting bias is the medium-term constraint. Long_term classification appropriate for a broad index ETF. Conviction 6 \u2014 below the 7 threshold; HOLD.",
+            "bullets": [
+              "Stacked bullish MA (price > MA20 > MA50 > MA200) with ADX 22.89 confirmed real trend and 3mo RS +11.74% vs. SPY (significant) confirm the AI/tech uptrend thesis is intact",
+              "Goldilocks macro backdrop (moderate growth, controlled inflation per Zacks, fresh) and Iran peace deal risk-on rotation support Nasdaq-100 multiple stability",
+              "MACD bearish cross with contracting histogram and rel_volume 0.50 signal a near-term consolidation pause \u2014 not a reversal in a confirmed uptrend",
+              "Fed removing cutting bias in 4.2% CPI environment caps multiple expansion upside; 95th percentile range position limits near-term entry conviction",
+              "Stop $719.79 (nearest structural support per briefing, 2.4% below current); thesis breaks if RSI falls below 40 with MACD expanding bearish on volume above 1.5\u00d7 average"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "SPY",
+          "side": "buy",
+          "intent": "sweep",
+          "qty": 1.0,
+          "limit_price": 735.89,
+          "notional": 735.89,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 1.0,
+          "filled_avg_price": 732.28,
+          "submitted_at": "2026-06-25T19:21:11.116292+00:00",
+          "rationale": "Cash sweep: idle cash 12.9% of equity exceeds the 5% ceiling \u2014 parking excess in SPY.",
+          "reasoning": {
+            "target_reasoning": "Bull and bear tied. The Goldilocks macro backdrop (Zacks, fresh) and Fed on hold support the broad market, but RSI 43.91 falling with mixed MA (price below MA20) and MACD bearish cross are near-term technical headwinds. SPY is the benchmark for all other positions \u2014 its primary use in this portfolio is as a sweep vehicle per the weekly directive ('sweep undeployed budget into the broad-market ETF rather than holding idle cash'). Setting initial fair values: 30d $752 reflects a modest push above current near the 52w high $760.40; 90d $775 reflects a gradual multiple stability if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest resistance) is just above current $744.78 \u2014 near-term ceiling. Chart $746.25 below 30d $752 \u2014 modest divergence, directional agreement (up). Long_term classification. Conviction 5, below 7 threshold \u2014 HOLD.",
+            "bullets": [
+              "Trailing P/E 26.67\u00d7 with Goldilocks macro backdrop (moderate growth + controlled inflation per Zacks) supports broad market at current levels; Iran peace deal removes energy inflation risk premium",
+              "Fed removed cutting bias (Warsh first meeting, CNBC fresh) \u2014 'higher for longer' constrains multiple expansion but 'on hold' avoids immediate multiple compression",
+              "RSI 43.91 falling with mixed MA (price below MA20) and MACD bearish cross signal near-term distribution \u2014 consolidation within the 90.7th percentile range position",
+              "Rel_volume 0.41 extremely thin \u2014 no institutional conviction supporting current levels; await volume confirmation before adding",
+              "Stop $731.84 (nearest structural support per briefing); thesis breaks if CPI re-accelerates above 4.5% triggering an explicit Warsh rate hike signal"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "MU",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "MU floor conviction 6 < required 7"
+        },
+        {
+          "fund": "balanced",
+          "ticker": "PGR",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PGR floor conviction 6 < required 7"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-24",
+      "stock": [],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "PANW",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PANW floor conviction 6 < required 7"
+        },
+        {
+          "fund": "balanced",
+          "ticker": "PGR",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PGR floor conviction 6 < required 7"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "ILLIQUID",
+          "reason": "AMAT260702C00615000: OI 117 / vol 8 / spread 19% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "INTC",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-23",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "SPY",
+          "side": "sell",
+          "intent": "sweep",
+          "qty": 2.0,
+          "limit_price": 730.48,
+          "notional": 1460.96,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 734.93,
+          "submitted_at": "2026-06-23T19:23:47.705855+00:00",
+          "rationale": "Funding sell: plan needs $1,070 beyond free cash.",
+          "reasoning": {
+            "target_reasoning": "Bull and bear tied. The Goldilocks macro backdrop (Zacks, fresh) and Fed on hold support the broad market, but RSI 43.91 falling with mixed MA (price below MA20) and MACD bearish cross are near-term technical headwinds. SPY is the benchmark for all other positions \u2014 its primary use in this portfolio is as a sweep vehicle per the weekly directive ('sweep undeployed budget into the broad-market ETF rather than holding idle cash'). Setting initial fair values: 30d $752 reflects a modest push above current near the 52w high $760.40; 90d $775 reflects a gradual multiple stability if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest resistance) is just above current $744.78 \u2014 near-term ceiling. Chart $746.25 below 30d $752 \u2014 modest divergence, directional agreement (up). Long_term classification. Conviction 5, below 7 threshold \u2014 HOLD.",
+            "bullets": [
+              "Trailing P/E 26.67\u00d7 with Goldilocks macro backdrop (moderate growth + controlled inflation per Zacks) supports broad market at current levels; Iran peace deal removes energy inflation risk premium",
+              "Fed removed cutting bias (Warsh first meeting, CNBC fresh) \u2014 'higher for longer' constrains multiple expansion but 'on hold' avoids immediate multiple compression",
+              "RSI 43.91 falling with mixed MA (price below MA20) and MACD bearish cross signal near-term distribution \u2014 consolidation within the 90.7th percentile range position",
+              "Rel_volume 0.41 extremely thin \u2014 no institutional conviction supporting current levels; await volume confirmation before adding",
+              "Stop $731.84 (nearest structural support per briefing); thesis breaks if CPI re-accelerates above 4.5% triggering an explicit Warsh rate hike signal"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "META",
+          "side": "buy",
+          "intent": "add",
+          "qty": 5.0,
+          "limit_price": 565.88,
+          "notional": 2829.4,
+          "stop_loss": 519.34,
+          "take_profit": 720.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 5.0,
+          "filled_avg_price": 564.09,
+          "submitted_at": "2026-06-23T19:23:47.720381+00:00",
+          "rationale": "Floor conviction 7, PEG 0.256 on 60.9% EPS growth; adding to existing position toward 10% weight; stop $519.34 per floor; funded from SPY parking.",
+          "reasoning": {
+            "target_reasoning": "Bull wins on multi-source fundamental evidence: forward P/E 15.56\u00d7 on 33.1% revenue and 60.9% EPS growth is a PEG of 0.256, at the 16th percentile of the 52w range \u2014 a genuine valuation dislocation. RSI 40.84 rising from a washed-out level is a quant bounce candidate; the Iran-deal risk-on rotation favors beaten-down mega-cap tech. Prior $620/$720 fair values held \u2014 thesis unchanged; today flat (+0.04%). The anti-momentum guardrail is NOT triggered (RSI 40.84 < 75, momentum_score 15 \u2014 this is mean-reversion, not a chase). Chart target $560.05 (nearest support, carried verbatim \u2014 chart_target.direction is downtrend so the technical anchor is the support floor) sits below spot $564.08, while the fundamental 30d $620 is above \u2014 divergence acknowledged: I weight the fundamental dislocation given the PEG 0.256 and the bounce-candidate RSI, noting the technical structure is still damaged (stacked-bearish) and $560 is the downside risk level. The bear's EU/capex-ROI case is real but does not impair the 32.84% margin core ad business. Conviction 7 meets the growth threshold; per profile bias, BUY on fundamental dislocation.",
+            "bullets": [
+              "Forward P/E 15.56\u00d7 on 33.1% revenue and 60.9% EPS growth \u2014 PEG 0.256 (15.56/60.9), the most compelling large-cap growth-at-value setup in this run at the 16th percentile of range",
+              "RSI 40.84 rising from a washed-out level is a quant bounce candidate; 32.84% margin and 32.93% ROE confirm the core advertising machine is structurally intact",
+              "Iran-deal risk-on rotation + product expansion (Meta Glasses $299, Arena prediction markets, Instagram Plus) broaden revenue beyond ads",
+              "EU child-safety probe escalation and ~$720B sector AI-capex skepticism are the live overhangs \u2014 monitoring flags, not thesis-breakers at this margin profile",
+              "Stop $519.34 (~8% below); thesis breaks if Q2 ad-revenue growth decelerates below 20% or regulatory action materially impairs ad targeting; nearest support $560.05 is the downside risk level"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "PANW",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PANW floor conviction 6 < required 7"
+        },
+        {
+          "fund": "balanced",
+          "ticker": "PGR",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PGR floor conviction 6 < required 7"
+        },
+        {
+          "fund": "options",
+          "ticker": "INTC",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold INTC260717C00140000"
+        },
+        {
+          "fund": "options",
+          "ticker": "CAT",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold CAT260717C01020000"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold KLAC260717C00270000"
+        },
+        {
+          "fund": "options",
+          "ticker": "TXN",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "INTC",
+          "reason_code": "UNDERLYING_COOLDOWN",
+          "reason": "INTC traded 1d ago, cooldown 2d"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMAT",
+          "reason_code": "ILLIQUID",
+          "reason": "AMAT260702C00615000: OI 118 / vol 8 / spread 17% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "INTC",
+          "reason_code": "UNDERLYING_COOLDOWN",
+          "reason": "INTC traded 1d ago, cooldown 2d"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CAT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "KLAC",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-22",
+      "stock": [
+        {
+          "fund": "conservative",
+          "ticker": "ADBE260626P00205000",
+          "side": "sell",
+          "intent": "exit",
+          "qty": 2,
+          "limit_price": 12.47,
+          "notional": 24.95,
+          "conviction": 1,
+          "status": "rejected",
+          "outcome": "not_executed",
+          "rationale": "Rotation candidate conviction 1, DONT_TRADE floor decision, expiring June 26 \u2014 binary settlement risk. Exiting to fund ABBV buy and reduce options expiry risk.",
+          "reasoning": {
+            "target_reasoning": "Same as ADBE260626P00200000 \u2014 short-dated options contract expiring June 26, 4 days. Even thinner volume (avg 76 contracts), RSI 83.11 extreme, at 88th percentile of 52w range. Binary expiry risk. No analytical framework applicable. DONT_TRADE per house rules and risk manager recommendation. Fair values set to spot as placeholders for a 4-day expiry derivative.",
+            "bullets": [
+              "Short-dated options contract expiring June 26, 2026 \u2014 4 days to expiry with binary settlement risk incompatible with house swing-trade framework",
+              "Volume avg 20d of 76 contracts \u2014 the most illiquid instrument in this run; exit risk is severe relative to a $13.39 option price",
+              "RSI 83.11 extreme at 88th percentile of 52w range \u2014 put has already priced maximum ADBE pessimism; theta decay now dominant over delta appreciation",
+              "No fundamental, insider, or news data applicable to this derivative instrument \u2014 all analytical inputs return N/A or null",
+              "DONT_TRADE \u2014 house universe rules specify US stocks only (NYSE, NASDAQ); short-dated expiring options are not within the active trading framework"
+            ]
+          }
+        },
+        {
+          "fund": "conservative",
+          "ticker": "SPY",
+          "side": "sell",
+          "intent": "sweep",
+          "qty": 7.0,
+          "limit_price": 740.18,
+          "notional": 5181.26,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 7.0,
+          "filled_avg_price": 743.83,
+          "submitted_at": "2026-06-22T18:58:11.826491+00:00",
+          "rationale": "Funding sell: plan needs $4,925 beyond free cash.",
+          "reasoning": {
+            "target_reasoning": "Bull and bear tied. The Goldilocks macro backdrop (Zacks, fresh) and Fed on hold support the broad market, but RSI 43.91 falling with mixed MA (price below MA20) and MACD bearish cross are near-term technical headwinds. SPY is the benchmark for all other positions \u2014 its primary use in this portfolio is as a sweep vehicle per the weekly directive ('sweep undeployed budget into the broad-market ETF rather than holding idle cash'). Setting initial fair values: 30d $752 reflects a modest push above current near the 52w high $760.40; 90d $775 reflects a gradual multiple stability if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest resistance) is just above current $744.78 \u2014 near-term ceiling. Chart $746.25 below 30d $752 \u2014 modest divergence, directional agreement (up). Long_term classification. Conviction 5, below 7 threshold \u2014 HOLD.",
+            "bullets": [
+              "Trailing P/E 26.67\u00d7 with Goldilocks macro backdrop (moderate growth + controlled inflation per Zacks) supports broad market at current levels; Iran peace deal removes energy inflation risk premium",
+              "Fed removed cutting bias (Warsh first meeting, CNBC fresh) \u2014 'higher for longer' constrains multiple expansion but 'on hold' avoids immediate multiple compression",
+              "RSI 43.91 falling with mixed MA (price below MA20) and MACD bearish cross signal near-term distribution \u2014 consolidation within the 90.7th percentile range position",
+              "Rel_volume 0.41 extremely thin \u2014 no institutional conviction supporting current levels; await volume confirmation before adding",
+              "Stop $731.84 (nearest structural support per briefing); thesis breaks if CPI re-accelerates above 4.5% triggering an explicit Warsh rate hike signal"
+            ]
+          }
+        },
+        {
+          "fund": "conservative",
+          "ticker": "ABBV",
+          "side": "buy",
+          "intent": "open",
+          "qty": 15.0,
+          "limit_price": 232.06,
+          "notional": 3480.95,
+          "stop_loss": 210.0,
+          "take_profit": 244.0,
+          "conviction": 8,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 15.0,
+          "filled_avg_price": 230.42,
+          "submitted_at": "2026-06-22T18:58:11.967105+00:00",
+          "rationale": "Floor conviction 8: 14.23x P/E, 3.20% yield, four regulatory approvals, Apogee expansion. Directive: maintain 3-4% defensive allocation, add toward $215-218 range.",
+          "reasoning": {
+            "target_reasoning": "Prior $228/$235 fair values revised upward \u2014 the $10.9B Apogee acquisition is a thesis-strengthening event (not merely a price move), adding a clinical atopic dermatitis asset to the four-indication regulatory cascade at forward P/E 14.23\u00d7 with 3.20% yield. 30d $238 reflects the breakout through nearest resistance $234.25 toward the 52w high $244.81; 90d $244 toward 52w high recovery as deal closes and pipeline narrative compounds. Chart target $234.25 (nearest swing resistance, Marcus R.) is the immediate technical ceiling \u2014 the fundamental 30d $238 sits just above, directional agreement. Bear concern about acquisition leverage is acknowledged but does not break the income thesis at 14.23\u00d7 forward with a defensive pipeline.",
+            "bullets": [
+              "Forward P/E 14.23\u00d7 with 12.4% revenue growth and 3.20% yield \u2014 de-risked post-Humira franchise with four confirmed regulatory approvals and now Apogee immunology expansion",
+              "The $10.9B cash acquisition of Apogee Therapeutics (WSJ) confirms management's pipeline conviction and extends the immunology moat into atopic dermatitis \u2014 largest deal in 5+ years",
+              "Healthcare defensive rotation confirmed in a 4.2% CPI stagflationary tape; beta 0.31 provides maximum rate insulation in the income portfolio cluster",
+              "RSI 67.48 flat at 20d high with rel_volume 0.88 \u2014 catalyst-driven gap, not momentum; ADX 17.02 chop means this is a fundamentals-driven income position; technical ceiling $234.25",
+              "Stop $210 below MA50 $212.04 per directive; thesis breaks if quarterly revenue growth decelerates below 8% or Apogee trial fails to advance to a regulatory submission"
+            ]
+          }
+        }
+      ],
+      "options": [
+        {
+          "book": "options",
+          "underlying": "INTC",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 140.0,
+          "expiry": "2026-07-17",
+          "dte": 25,
+          "qty": 2.0,
+          "limit_price": 4.23,
+          "premium_at_risk": 846.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 4.2,
+          "submitted_at": "2026-06-22T18:04:28.632804+00:00",
+          "rationale": "Chart-target uptrend with measured-move extension toward $200; $150 is the interim structural target carrying the highest OI concentration in the expiry, a natural profit-cap level. 25 DTE provides room for the post-52w-high breakout to run.",
+          "legs": [
+            {
+              "occ_symbol": "INTC260717C00140000",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 140.0,
+              "expiry": "2026-07-17"
+            },
+            {
+              "occ_symbol": "INTC260717C00150000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 150.0,
+              "expiry": "2026-07-17"
+            }
+          ],
+          "reasoning": {
+            "thesis": "88 DTE gives the measured-move thesis ($200 chart target) time to develop; $160 is a realistic interim target with good OI, ~15% extension from spot. Long leg at $140 near-the-money captures the delta-rich portion.",
+            "risk_note": "High beta means market drawdowns amplify downside; a close back through $129.44 on volume materially changes the setup.",
+            "manager_note": "Longer-dated companion to the Jul breakout \u2014 IV-rank low gives time for the measured move without earnings inside the window."
+          }
+        },
+        {
+          "book": "options",
+          "underlying": "CAT",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 1020.0,
+          "expiry": "2026-07-17",
+          "dte": 25,
+          "qty": 1.0,
+          "limit_price": 19.23,
+          "premium_at_risk": 1923.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 1.0,
+          "filled_avg_price": 18.55,
+          "submitted_at": "2026-06-22T18:04:28.705380+00:00",
+          "rationale": "Five-setup strength-9 BUY with CAT pressing its 52-week high; a pivot break triggers the next leg. ATM/+4% spread captures the breakout with defined risk while IV is cheap.",
+          "legs": [
+            {
+              "occ_symbol": "CAT260717C01020000",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 1020.0,
+              "expiry": "2026-07-17"
+            },
+            {
+              "occ_symbol": "CAT260717C01060000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 1060.0,
+              "expiry": "2026-07-17"
+            }
+          ],
+          "reasoning": {
+            "thesis": "Five-setup strength-9 BUY with CAT pressing its 52-week high; a pivot break triggers the next leg. ATM/+4% spread captures the breakout with defined risk while IV is cheap.",
+            "risk_note": "Earnings Aug 4 sits outside this expiry; a failed 52w-high breakout could send price toward $940 pivot quickly given high beta.",
+            "manager_note": "Only name with unanimous upward targets and earnings safely outside DTE \u2014 breakeven just 1.5% over spot on a confirmed pivot."
+          }
+        },
+        {
+          "book": "options",
+          "underlying": "KLAC",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 270.0,
+          "expiry": "2026-07-17",
+          "dte": 25,
+          "qty": 1.0,
+          "limit_price": 7.33,
+          "premium_at_risk": 733.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 1.0,
+          "filled_avg_price": 6.9,
+          "submitted_at": "2026-06-22T18:04:28.749291+00:00",
+          "rationale": "Five-setup strength-9 BUY with price knocking on the 52w high; a break above is the fresh pivot trigger. 270/285 captures the immediate post-breakout move in 25 DTE, pre-earnings, with defined risk.",
+          "legs": [
+            {
+              "occ_symbol": "KLAC260717C00270000",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 270.0,
+              "expiry": "2026-07-17"
+            },
+            {
+              "occ_symbol": "KLAC260717C00285000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 285.0,
+              "expiry": "2026-07-17"
+            }
+          ],
+          "reasoning": {
+            "thesis": "Five-setup strength-9 BUY with price knocking on the 52w high; a break above is the fresh pivot trigger. 270/285 captures the immediate post-breakout move in 25 DTE, pre-earnings, with defined risk.",
+            "risk_note": "Earnings Jul 30 outside this Jul 17 expiry \u2014 no crush risk; spread expires worthless if the breakout fails to materialize.",
+            "manager_note": "Earnings cleanly outside expiry is the edge bears couldn't break \u2014 needs the pivot to actually break, so size to the trigger."
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "PGR",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PGR floor conviction 6 < required 7"
+        },
+        {
+          "fund": "balanced",
+          "ticker": "PANW",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "PANW floor conviction 6 < required 7"
+        },
+        {
+          "fund": "options",
+          "ticker": "TXN",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "INTC",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MRVL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-19",
+      "stock": [],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "ILLIQUID",
+          "reason": "ADBE260626P00185000: OI 196 / vol 308 / spread 17% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "SNDK",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "ILLIQUID",
+          "reason": "PANW260821C00330000: OI 286 / vol 236 / spread 23% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "FDX",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "CI",
+          "side": "buy",
+          "intent": "add",
+          "qty": 2.0,
+          "limit_price": 287.14,
+          "notional": 574.29,
+          "stop_loss": 269.0,
+          "take_profit": 305.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 286.16,
+          "submitted_at": "2026-06-17T17:12:20.879867+00:00",
+          "rationale": "Floor BUY conviction 7; forward P/E 8.75x on +25% EPS growth; directive confirms managed-care rotation, target 2-3% weight; current 2.3% is at lower bound.",
+          "reasoning": {
+            "target_reasoning": "Bull wins: prior $305/$330 fair values held. Price pulled back from $296 to $292.90 today \u2014 a price move on rel_volume 0.37 (thin), not a thesis change. Forward P/E 8.75\u00d7 with EPS quarterly +25% and multi-source confirmation of softer medical cost trends (Morgan Stanley and Mizuho both fresh in current pool) remains the dominant managed-care dislocation thesis. Stacked_bullish MA is the one clean technical positive in the chop tape; ADX 18.62 trending toward the 20 threshold. Chart target $298.98 (nearest resistance) serves as the near-term technical ceiling; 30d $305 reflects a move through that resistance. 90d $330 toward Mizuho's $340 on continued normalization. Per directive: maintain 2\u20133% rotation position, stop below 20-day MA. CEO $95.32M null-type transaction flagged at LOW confidence \u2014 does not override the fundamental case per established protocol.",
+            "bullets": [
+              "Forward P/E 8.75\u00d7 on EPS quarterly +25% growth \u2014 the most compelling managed-care valuation dislocation in the portfolio",
+              "Morgan Stanley (utilization normalization + AI upside) and Mizuho ($340 PT, improved regulatory stability) both fresh in the current news pool \u2014 multi-source catalyst confirmation",
+              "Stacked bullish MA (price > MA20 $284.61 > MA50 $281.79 > MA200 $278.51) is the one clean technical positive in an ADX-chop tape",
+              "CEO $95.32M null-type transaction cluster flagged at LOW confidence \u2014 transaction type unconfirmable; does not override 8.75\u00d7 forward P/E per established protocol",
+              "Stop $269 (8% from $292.90 per house max); thesis breaks if next quarterly medical cost ratios reverse the normalization trend or PBM transition causes earnings revision"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "ABBV",
+          "side": "buy",
+          "intent": "add",
+          "qty": 3.0,
+          "limit_price": 222.52,
+          "notional": 667.57,
+          "stop_loss": 210.0,
+          "take_profit": 235.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 3.0,
+          "filled_avg_price": 221.76,
+          "submitted_at": "2026-06-17T17:12:20.897397+00:00",
+          "rationale": "Floor BUY conviction 7; 3.11% yield, four regulatory approvals this week, strongest 1-month RS in book; directive targets 3-4% defensive allocation; adding to lower bound.",
+          "reasoning": {
+            "target_reasoning": "Prior $228/$235 fair values held \u2014 thesis intact. Price $221.85 vs. prior $221.59 is essentially flat; no thesis change. The regulatory cascade (DECNUPAZ, AQUIPTA, VENCLYXTO, UK ovarian \u2014 event log June 8) remains the thesis anchor supporting multi-quarter EPS ramp at 13.65x forward P/E with 3.11% yield. Chart target $226 (nearest resistance per briefing $226.36, carried from Marcus R.) aligns with the 30d $228 view \u2014 near-term targets broadly agree direction. ADX 17.59 chop means the BUY is entirely fundamentals-driven, not a momentum trade. Per directive: maintain 3-4% defensive allocation, stop $210 below MA50 $211.51.",
+            "bullets": [
+              "Forward P/E 13.65x with 12.4% revenue growth and 3.11% yield \u2014 de-risked post-Humira franchise at a compelling income-quality combination",
+              "Regulatory cascade (DECNUPAZ, AQUIPTA, VENCLYXTO, UK ovarian \u2014 event log June 8) confirms pipeline de-risking across four indications supporting multi-quarter EPS normalization",
+              "Healthcare defensive rotation in a 4.2% CPI stagflationary tape; beta 0.31 provides genuine rate-insulation vs. growth names facing multiple compression",
+              "ADX 17.59 chop with momentum_score 20 \u2014 this is a fundamental income position, not a momentum trade; RSI 54.26 falling and rel_volume 0.26 confirm no near-term technical catalyst",
+              "Stop $210 below MA50 $211.51 structural floor (5.3% below current); thesis breaks if quarterly revenue growth decelerates below 8%"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "ILLIQUID",
+          "reason": "ADBE260626P00205000: OI 398 / vol 34 / spread 19% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "ILLIQUID",
+          "reason": "PANW260918C00330000: OI 1045 / vol 1 / spread 5% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "SNDK",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "ILLIQUID",
+          "reason": "CRWD260717C00690000: OI 281 / vol 6 / spread 8% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ACN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "stock": [],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold ADBE260626P00205000"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "SNDK",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ADBE",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold ADBE260626P00205000"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "SNDK",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "ILLIQUID",
+          "reason": "CRWD260918C00700000: OI 268 / vol 7 / spread 6% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "ACN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ACN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMZN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AVGO",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "stock": [
+        {
+          "fund": "aggressive",
+          "ticker": "ABBV",
+          "side": "buy",
+          "intent": "add",
+          "qty": 3.0,
+          "limit_price": 223.1,
+          "notional": 669.29,
+          "stop_loss": 210.0,
+          "take_profit": 235.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 3.0,
+          "filled_avg_price": 222.44,
+          "submitted_at": "2026-06-15T19:06:03.441317+00:00",
+          "rationale": "Floor conviction 7 BUY; forward P/E 13.67x, 3.04% yield, four regulatory approvals this week. Directive lean-into name. Adding to reach ~3.9% within 3-4% directive cap.",
+          "reasoning": {
+            "target_reasoning": "Prior $228/$235 fair values held \u2014 thesis intact (regulatory cascade de-risks forward EPS ramp at 13.67\u00d7 forward P/E, 3.04% yield, 12.4% revenue growth). Price declined from $226 to $222.24 today but on rel_volume 0.42 with no news catalyst \u2014 this is noise, not a thesis break. Chart target $226.36 (nearest resistance) and 30d $228 agree direction (up). 90d $235 toward income fair value as the post-Humira pipeline compounds. Targets broadly agree direction; 30d and chart_target_llm cluster tightly.",
+            "bullets": [
+              "Forward P/E 13.67\u00d7 with 12.4% revenue growth and 3.04% yield \u2014 de-risked post-Humira franchise at a compelling income-quality combination",
+              "Regulatory cascade (DECNUPAZ, AQUIPTA, VENCLYXTO, UK ovarian \u2014 event log June 8) confirmed across four indications, supporting multi-quarter EPS ramp",
+              "Healthcare defensive rotation confirmed: XLV outperforming XLK in a 4.2% CPI stagflationary tape; beta 0.31 provides the income anchor",
+              "Today's -2.41% on rel_volume 0.42 is low-participation noise, not a directional signal; mixed MA alignment and ADX 19.73 chop confirm",
+              "Stop $210 below 20-day MA $218.82 per directive; thesis breaks if next quarterly revenue growth decelerates below 8%"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "CI",
+          "side": "buy",
+          "intent": "add",
+          "qty": 2.0,
+          "limit_price": 293.89,
+          "notional": 587.77,
+          "stop_loss": 269.0,
+          "take_profit": 330.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 293.22,
+          "submitted_at": "2026-06-15T19:06:03.473909+00:00",
+          "rationale": "Floor conviction 7 BUY; forward P/E 8.75x, EPS +25% quarterly, stacked-bullish MA. Directive's cleanest setup. Adding to reach ~3% within 2-3% directive rotation target.",
+          "reasoning": {
+            "target_reasoning": "Bull wins: prior $305/$330 fair values held. Price pulled back from $296 to $292.90 today \u2014 a price move on rel_volume 0.37 (thin), not a thesis change. Forward P/E 8.75\u00d7 with EPS quarterly +25% and multi-source confirmation of softer medical cost trends (Morgan Stanley and Mizuho both fresh in current pool) remains the dominant managed-care dislocation thesis. Stacked_bullish MA is the one clean technical positive in the chop tape; ADX 18.62 trending toward the 20 threshold. Chart target $298.98 (nearest resistance) serves as the near-term technical ceiling; 30d $305 reflects a move through that resistance. 90d $330 toward Mizuho's $340 on continued normalization. Per directive: maintain 2\u20133% rotation position, stop below 20-day MA. CEO $95.32M null-type transaction flagged at LOW confidence \u2014 does not override the fundamental case per established protocol.",
+            "bullets": [
+              "Forward P/E 8.75\u00d7 on EPS quarterly +25% growth \u2014 the most compelling managed-care valuation dislocation in the portfolio",
+              "Morgan Stanley (utilization normalization + AI upside) and Mizuho ($340 PT, improved regulatory stability) both fresh in the current news pool \u2014 multi-source catalyst confirmation",
+              "Stacked bullish MA (price > MA20 $284.61 > MA50 $281.79 > MA200 $278.51) is the one clean technical positive in an ADX-chop tape",
+              "CEO $95.32M null-type transaction cluster flagged at LOW confidence \u2014 transaction type unconfirmable; does not override 8.75\u00d7 forward P/E per established protocol",
+              "Stop $269 (8% from $292.90 per house max); thesis breaks if next quarterly medical cost ratios reverse the normalization trend or PBM transition causes earnings revision"
+            ]
+          }
+        }
+      ],
+      "options": [
+        {
+          "book": "options",
+          "underlying": "ADBE",
+          "structure": "debit_put_spread",
+          "option_type": "put",
+          "strike": 205.0,
+          "expiry": "2026-06-26",
+          "dte": 11,
+          "qty": 2.0,
+          "limit_price": 2.27,
+          "premium_at_risk": 454.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 2.21,
+          "submitted_at": "2026-06-15T18:11:27.203915+00:00",
+          "rationale": "Four-setup SELL with fresh Ichimoku TK bear cross and pivot break below 236; 205/200 spread rides toward chart support at 204. Tiny debit, 2:1 R/R in a confirmed downtrend.",
+          "legs": [
+            {
+              "occ_symbol": "ADBE260626P00205000",
+              "side": "buy",
+              "option_type": "put",
+              "strike": 205.0,
+              "expiry": "2026-06-26"
+            },
+            {
+              "occ_symbol": "ADBE260626P00200000",
+              "side": "sell",
+              "option_type": "put",
+              "strike": 200.0,
+              "expiry": "2026-06-26"
+            }
+          ],
+          "reasoning": {
+            "thesis": "Four-setup SELL with fresh Ichimoku TK bear cross and pivot break below 236; 205/200 spread rides toward chart support at 204. Tiny debit, 2:1 R/R in a confirmed downtrend.",
+            "risk_note": "Stochastic oversold bounce to 210-212 is the live threat in 11 DTE; loss capped at small debit.",
+            "manager_note": "Smallest debit on the board for a clean 2:1 \u2014 size it modestly given the short fuse and oversold bounce risk."
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "PANW at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "PANW at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "SNDK",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "ACN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMZN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "AVGO",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MCD",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-12",
+      "stock": [],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ACN",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'watch' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "NVDA",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        },
+        {
+          "fund": "options",
+          "ticker": "GOOGL",
+          "reason_code": "TIER_FILTER",
+          "reason": "tier 'medium' not in ['high']"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "stock": [
+        {
+          "fund": "conservative",
+          "ticker": "SPY",
+          "side": "buy",
+          "intent": "open",
+          "qty": 155.0,
+          "limit_price": 595.69,
+          "notional": 92331.79,
+          "status": "replaced",
+          "outcome": "working",
+          "filled_qty": 0.0,
+          "submitted_at": "2026-06-10T17:09:01.474557+00:00",
+          "rationale": "No stock clears conviction-8 threshold; weekly directive bars new entries pre-ORCL. Deploy excess cash to default parking ETF to meet max_cash_pct policy.",
+          "reasoning": {
+            "target_reasoning": "Prior $752/$775 fair values held \u2014 thesis unchanged; today's +1.31% to $738.52 from prior session $744.78 reflects near-term volatility, not a thesis change. The Iran de-escalation bounce is the near-term catalyst but does not change the multi-quarter fundamental picture. 30d $752 reflects a push through nearest resistance $746.25 and toward the 52w high zone; 90d $775 reflects gradual expansion if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest swing resistance above) is the immediate technical ceiling. Chart $746.25 sits below 30d $752 \u2014 modest divergence, directional agreement (up). Conviction 5 below long_term threshold of 7 \u2014 HOLD.",
+            "bullets": [
+              "US-Iran de-escalation (Yahoo:Stocktwits, fresh) reduces geopolitical tail risk and supports near-term SPY rally; improving labor market data approaching in holiday-shortened jobs week",
+              "Trailing P/E 26.45\u00d7 in a Goldilocks-adjacent environment (moderate growth, CPI decelerating from 4.2% peak hypothetically); MA50 $733.46 provides structural support",
+              "Core PCE 3.4% (CNBC, fresh) is the highest since October 2023 \u2014 this single data point prevents rate cuts and caps multiple expansion; Warsh Fed on hold explicitly",
+              "ADX 24.05 sub-25 with MACD contracting bearish cross and rel_volume 0.40 thin \u2014 no institutional conviction at current levels; consolidation mode appropriate",
+              "Stop $731.84 (nearest structural support, 0.9% below current); thesis breaks if CPI re-accelerates above 4.5% with explicit Warsh hike signal, or if leverage-driven liquidation cascade begins"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "SPY",
+          "side": "buy",
+          "intent": "open",
+          "qty": 98.0,
+          "limit_price": 595.69,
+          "notional": 58377.52,
+          "status": "replaced",
+          "outcome": "working",
+          "filled_qty": 0.0,
+          "submitted_at": "2026-06-10T17:09:46.507214+00:00",
+          "rationale": "Park excess idle cash at benchmark beta. ORCL earnings tonight governs AI capital redeployment; SPY holds capital productively until the binary resolves.",
+          "reasoning": {
+            "target_reasoning": "Prior $752/$775 fair values held \u2014 thesis unchanged; today's +1.31% to $738.52 from prior session $744.78 reflects near-term volatility, not a thesis change. The Iran de-escalation bounce is the near-term catalyst but does not change the multi-quarter fundamental picture. 30d $752 reflects a push through nearest resistance $746.25 and toward the 52w high zone; 90d $775 reflects gradual expansion if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest swing resistance above) is the immediate technical ceiling. Chart $746.25 sits below 30d $752 \u2014 modest divergence, directional agreement (up). Conviction 5 below long_term threshold of 7 \u2014 HOLD.",
+            "bullets": [
+              "US-Iran de-escalation (Yahoo:Stocktwits, fresh) reduces geopolitical tail risk and supports near-term SPY rally; improving labor market data approaching in holiday-shortened jobs week",
+              "Trailing P/E 26.45\u00d7 in a Goldilocks-adjacent environment (moderate growth, CPI decelerating from 4.2% peak hypothetically); MA50 $733.46 provides structural support",
+              "Core PCE 3.4% (CNBC, fresh) is the highest since October 2023 \u2014 this single data point prevents rate cuts and caps multiple expansion; Warsh Fed on hold explicitly",
+              "ADX 24.05 sub-25 with MACD contracting bearish cross and rel_volume 0.40 thin \u2014 no institutional conviction at current levels; consolidation mode appropriate",
+              "Stop $731.84 (nearest structural support, 0.9% below current); thesis breaks if CPI re-accelerates above 4.5% with explicit Warsh hike signal, or if leverage-driven liquidation cascade begins"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "SPY",
+          "side": "buy",
+          "intent": "sweep",
+          "qty": 4.0,
+          "limit_price": 733.27,
+          "notional": 2933.07,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 4.0,
+          "filled_avg_price": 729.64,
+          "submitted_at": "2026-06-10T17:09:46.688187+00:00",
+          "rationale": "Cash sweep: idle cash 67.6% of equity exceeds the 5% ceiling \u2014 parking excess in SPY.",
+          "reasoning": {
+            "target_reasoning": "Prior $752/$775 fair values held \u2014 thesis unchanged; today's +1.31% to $738.52 from prior session $744.78 reflects near-term volatility, not a thesis change. The Iran de-escalation bounce is the near-term catalyst but does not change the multi-quarter fundamental picture. 30d $752 reflects a push through nearest resistance $746.25 and toward the 52w high zone; 90d $775 reflects gradual expansion if CPI decelerates from 4.2% peak. Chart target $746.25 (nearest swing resistance above) is the immediate technical ceiling. Chart $746.25 sits below 30d $752 \u2014 modest divergence, directional agreement (up). Conviction 5 below long_term threshold of 7 \u2014 HOLD.",
+            "bullets": [
+              "US-Iran de-escalation (Yahoo:Stocktwits, fresh) reduces geopolitical tail risk and supports near-term SPY rally; improving labor market data approaching in holiday-shortened jobs week",
+              "Trailing P/E 26.45\u00d7 in a Goldilocks-adjacent environment (moderate growth, CPI decelerating from 4.2% peak hypothetically); MA50 $733.46 provides structural support",
+              "Core PCE 3.4% (CNBC, fresh) is the highest since October 2023 \u2014 this single data point prevents rate cuts and caps multiple expansion; Warsh Fed on hold explicitly",
+              "ADX 24.05 sub-25 with MACD contracting bearish cross and rel_volume 0.40 thin \u2014 no institutional conviction at current levels; consolidation mode appropriate",
+              "Stop $731.84 (nearest structural support, 0.9% below current); thesis breaks if CPI re-accelerates above 4.5% with explicit Warsh hike signal, or if leverage-driven liquidation cascade begins"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "ABBV",
+          "side": "buy",
+          "intent": "open",
+          "qty": 15.0,
+          "limit_price": 226.95,
+          "notional": 3404.3,
+          "stop_loss": 210.0,
+          "take_profit": 235.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 15.0,
+          "filled_avg_price": 225.95,
+          "submitted_at": "2026-06-10T17:10:21.399745+00:00",
+          "rationale": "Floor BUY conviction 7; EC AQUIPTA approval hard catalyst; directive lean-into at 3-4% defensive allocation; stop below 20d MA per directive.",
+          "reasoning": {
+            "target_reasoning": "Prior $228/$235 fair values held (thesis intact: regulatory cascade de-risks forward earnings at 13.89x P/E with 3.07% yield). Price $225.77 vs. prior $226.10 \u2014 essentially flat, no thesis change. The ABBV regulatory cascade events (event log June 8) remain the thesis anchor; they are priced into the 1mo RS +12.66% but not yet reflected in the 90d fair value given the pipeline de-risking extends multi-quarter. Chart $226.36 (nearest resistance) aligns tightly with 30d $228 \u2014 targets broadly agree direction. Per directive: maintain 3-4% defensive allocation, stop below 20-day MA ~$210.",
+            "bullets": [
+              "Forward P/E 13.89x with 12.4% revenue growth and 3.07% yield \u2014 de-risked post-Humira franchise at a compelling income/quality combination",
+              "Regulatory cascade (DECNUPAZ, AQUIPTA, VENCLYXTO, UK ovarian) confirmed in event log \u2014 pipeline de-risking supports multi-quarter EPS ramp",
+              "RS +12.66% 1mo confirms institutional re-rating is underway; beta 0.31 provides defensive income anchor in 4.2% CPI environment",
+              "MACD histogram contracting on rel_volume 0.25 \u2014 the rally is unconfirmed by volume; mean-reversion risk below $226.36 resistance",
+              "Stop $210 below 20-day MA $216.60; thesis breaks if next quarterly revenue growth decelerates below 8%"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "CI",
+          "side": "buy",
+          "intent": "open",
+          "qty": 8.0,
+          "limit_price": 297.59,
+          "notional": 2380.75,
+          "stop_loss": 265.0,
+          "take_profit": 320.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 8.0,
+          "filled_avg_price": 296.26,
+          "submitted_at": "2026-06-10T17:10:21.416623+00:00",
+          "rationale": "Floor BUY conviction 7; forward P/E 8.85x on +25% EPS growth; managed care rotation confirmed; directive 2-3% rotation position.",
+          "reasoning": {
+            "target_reasoning": "Prior $305/$330 fair values held (thesis unchanged: forward P/E 8.85x managed care dislocation with multi-source confirmation of softer medical cost catalyst). Price $296.20 vs. prior $293.70 \u2014 modest upward move, no thesis change. Chart $298.98 (nearest resistance) is just above spot, serving as the near-term technical ceiling. 30d $305 reflects a move through that resistance; 90d $330 toward Mizuho's $340 PT on continued normalization. The stacked_bullish MA alignment is the one clean technical positive in the chop tape. CEO $95.3M null-type transaction flagged at LOW confidence \u2014 does not override 8.85x forward P/E per prior coaching.",
+            "bullets": [
+              "Forward P/E 8.85x on EPS quarterly +25% growth \u2014 the most compelling managed care valuation in the portfolio on the softest medical cost backdrop in years",
+              "Morgan Stanley and Mizuho both confirm utilization normalization as a multi-quarter earnings tailwind; three-source convergence is a genuine catalyst signal",
+              "Stacked bullish MA (price > MA20 > MA50 > MA200) is the one clean technical positive in an ADX-chop tape; RS +6.04% 3mo confirms durable outperformance",
+              "CEO $95.3M null-type transaction cluster flagged at LOW confidence; does not override the fundamental case at this valuation per established rules",
+              "Stop $265 (8% house max); thesis breaks if next quarterly medical cost ratios reverse the normalization trend"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "QQQ",
+          "side": "buy",
+          "intent": "open",
+          "qty": 85.0,
+          "limit_price": 484.97,
+          "notional": 41222.28,
+          "status": "replaced",
+          "outcome": "working",
+          "filled_qty": 0.0,
+          "submitted_at": "2026-06-10T17:10:21.430076+00:00",
+          "rationale": "Parking excess cash above 5% ceiling; risk-on regime; QQQ fits aggressive growth mandate; residual sweep vehicle.",
+          "reasoning": {
+            "target_reasoning": "Prior $743/$780 fair values held \u2014 today's -2.02% to $710.54 is index-level volatility, not a thesis change. Bull and bear tied: durable +8.17% 3mo RS and the SpaceX Nasdaq-100 inclusion (~$4.3B inflows) vs. the Mag-7 $2.3T monthly drawdown, Burry short, and macd bearish cross. Chart target $719.00 (nearest resistance, carried verbatim) sits above spot \u2014 the near-term ceiling; 30d $743 toward the MA20/prior-range recovery; 90d $780 on AI-tech compounding if the cycle holds. Conviction 5 below the long_term threshold of 7 \u2014 HOLD; the vehicle trades on the rate/AI-rotation regime directly.",
+            "bullets": [
+              "3mo RS +8.17% vs SPY (significant, durable AI/tech leadership) despite the -4.67% 1mo pullback; the 3-month AI capex cycle has institutional backing",
+              "SpaceX Nasdaq-100 inclusion (~$4.3B est. passive inflows) is a date-certain mechanical catalyst; weak jobs (+57K) eases Fed-hike pressure, a modest multiple tailwind",
+              "Mag-7 $2.3T monthly market-cap loss and Burry's fresh short on NVDA/TSLA/AMAT (top holdings) plus a macd bearish cross with contracting histogram signal near-term component deterioration",
+              "Trailing P/E 32.62 at 81st percentile of range leaves little cushion; rel_volume 0.67 thin, momentum_score 35 \u2014 no near-term entry edge",
+              "Stop $683 (near structural support; widen for a long-term core hold); thesis breaks if 3+ Mag-7 names miss Q2 or core PCE re-accelerates above 4.5% with a Warsh hike signal"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": [
+        {
+          "fund": "balanced",
+          "ticker": "MO",
+          "side": "buy",
+          "intent": "open",
+          "reason_code": "LOW_CONVICTION",
+          "reason": "MO floor conviction 6 < required 7"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AVGO",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold JPM260618C00312500"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "ILLIQUID",
+          "reason": "HCA260821P00380000: OI 370 / vol 2 / spread 14% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "stock": [],
+      "options": [
+        {
+          "book": "options",
+          "underlying": "JPM",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 312.5,
+          "expiry": "2026-06-18",
+          "dte": 10,
+          "qty": 2.0,
+          "limit_price": 1.4,
+          "premium_at_risk": 280.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 1.4,
+          "submitted_at": "2026-06-09T16:23:26.622374+00:00",
+          "rationale": "Chart strength-9 BUY with fresh Ichimoku TK cross and VWAP reclaim argues for a near-term push; supertrend resistance at $314.97 is the key level to clear, so buying the $312.50 call and selling the $315 call on Jun 18 captures that breakout attempt with defined risk and 10 DTE to let the tape develop.",
+          "legs": [
+            {
+              "occ_symbol": "JPM260618C00312500",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 312.5,
+              "expiry": "2026-06-18"
+            },
+            {
+              "occ_symbol": "JPM260618C00315000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 315.0,
+              "expiry": "2026-06-18"
+            }
+          ],
+          "reasoning": {
+            "thesis": "Chart strength-9 BUY with fresh Ichimoku TK cross and VWAP reclaim argues for a near-term push; supertrend resistance at $314.97 is the key level to clear, so buying the $312.50 call and selling the $315 call on Jun 18 captures that breakout attempt with defined risk and 10 DTE to let the tape develop.",
+            "risk_note": "Supertrend at $314.97 is active resistance \u2014 spread maxes at $315 so the cap is deliberate, but a stall below that level burns the full debit in 10 days.",
+            "manager_note": "Spread is tight and the R/R is sub-1 \u2014 this is a high-conviction breakout trade sized for the move, not the payout; keep units small."
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "PANW at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AVGO",
+          "reason_code": "UNDERLYING_COOLDOWN",
+          "reason": "AVGO traded 1d ago, cooldown 2d"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "SUB_MIN_QTY",
+          "reason": "per-trade budget $1951 buys <1 unit at $4330"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "AVGO",
+          "reason_code": "UNDERLYING_COOLDOWN",
+          "reason": "AVGO traded 1d ago, cooldown 2d"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "DUPLICATE",
+          "reason": "already hold JPM260618C00312500"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-08",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "ABBV",
+          "side": "buy",
+          "intent": "open",
+          "qty": 14.0,
+          "limit_price": 222.0,
+          "notional": 3108.0,
+          "stop_loss": 210.0,
+          "take_profit": 235.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 14.0,
+          "filled_avg_price": 221.59,
+          "submitted_at": "2026-06-08T17:39:15.445389+00:00",
+          "rationale": "Floor conviction 7, BUY. EC AQUIPTA approval is hard catalyst; +12.1% 20d leadership. Weekly directive: initiate 3-4% defensive allocation, stop below 20d MA ~$210.",
+          "reasoning": {
+            "target_reasoning": "Bull wins: regulatory cascade (DECNUPAZ, AQUIPTA, VENCLYXTO, UK endorsement) de-risks the forward earnings ramp at 13.63\u00d7 forward P/E with a 3.05% yield. Chart nearest resistance $226.36 provides the immediate technical ceiling; 30d $228 reflects a move through resistance, 90d $235 toward fair value recovery. RS +7.86% 1mo confirms recent leadership. Per weekly directive: initiate 3-4% defensive allocation, stop below 20-day MA ~$214.",
+            "bullets": [
+              "Forward P/E 13.63\u00d7 with 12.4% revenue growth and multi-indication regulatory wins validates the post-Humira transition",
+              "DECNUPAZ, AQUIPTA, VENCLYXTO, and UK ovarian endorsements are hard catalysts de-risking the pipeline across oncology and migraine",
+              "3.05% dividend yield at beta 0.31 provides defensive income in a high-household-worry macro environment",
+              "RSI 64.08 with RS +7.86% 1mo confirms recent leadership; 3mo lagging -11.49% reflects the pre-catalyst period",
+              "Stop $210 below 20-day MA $214.50; thesis breaks if next quarter revenue growth decelerates below 8%"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "CI",
+          "side": "buy",
+          "intent": "open",
+          "qty": 8.0,
+          "limit_price": 289.0,
+          "notional": 2312.0,
+          "stop_loss": 265.0,
+          "take_profit": 320.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 8.0,
+          "filled_avg_price": 288.96,
+          "submitted_at": "2026-06-08T17:39:15.470796+00:00",
+          "rationale": "Floor conviction 7, BUY. Forward P/E 8.62x with EPS +25%; Morgan Stanley explicit rec on softer medical cost trends. Weekly directive: 2-3% rotation position.",
+          "reasoning": {
+            "target_reasoning": "Bull wins: forward P/E 8.62\u00d7 is a genuine managed care dislocation with EPS quarterly +25% and multi-source confirmation of the softer medical cost trend catalyst (Morgan Stanley, 247 Wall St., Mizuho \u2014 all fresh). The CEO's $95M null-type transaction (INSIDER_BEARISH LOW confidence per Marcus C.) is flagged but at LOW confidence does not override the fundamental case at 8.62\u00d7 forward P/E. Chart target $288.97 (nearest resistance) sits essentially at spot \u2014 near-term ceiling acknowledged; 30d $305 toward the next structural level, 90d $330 toward the Mizuho $340 PT anchored to improving fundamentals. Stacked_bullish MA is the one clean technical positive. Per weekly directive: initiate 2-3% rotation position, stop below 20-day MA.",
+            "bullets": [
+              "Forward P/E 8.62\u00d7 is among the cheapest managed care valuations with EPS quarterly +25% growth already in the numbers",
+              "Softer medical cost trends confirmed by Morgan Stanley and 247 Wall St. (both fresh) \u2014 multi-quarter earnings tailwind for managed care",
+              "Stacked bullish MA (price > MA20 > MA50 > MA200) is the only ADX-chop-regime technical positive worth weighting",
+              "CEO's $95M null-type transaction cluster flagged at LOW confidence \u2014 does not override 8.62\u00d7 forward P/E at this magnitude",
+              "Stop $265 (8% house max); thesis breaks if Q3 medical cost ratios reverse the normalization trend"
+            ]
+          }
+        }
+      ],
+      "options": [
+        {
+          "book": "options",
+          "underlying": "AVGO",
+          "structure": "debit_put_spread",
+          "option_type": "put",
+          "strike": 400.0,
+          "expiry": "2026-06-18",
+          "dte": 10,
+          "qty": 2.0,
+          "limit_price": 6.94,
+          "premium_at_risk": 1388.0,
+          "conviction": 8.0,
+          "status": "expired",
+          "outcome": "not_executed",
+          "filled_qty": 0.0,
+          "submitted_at": "2026-06-08T16:58:03.709201+00:00",
+          "rationale": "Four-setup SELL signal (supertrend flip, VWAP loss, pivot break, bearish MACD cross) confirms a technical breakdown below $399.83 support and $403.78 VWAP; debit spread to fib-50/BB-lower zone captures the near-term directional move with defined risk given diverged fundamental targets.",
+          "legs": [
+            {
+              "occ_symbol": "AVGO260618P00400000",
+              "side": "buy",
+              "option_type": "put",
+              "strike": 400.0,
+              "expiry": "2026-06-18"
+            },
+            {
+              "occ_symbol": "AVGO260618P00385000",
+              "side": "sell",
+              "option_type": "put",
+              "strike": 385.0,
+              "expiry": "2026-06-18"
+            }
+          ],
+          "reasoning": {
+            "thesis": "Four-setup SELL signal (supertrend flip, VWAP loss, pivot break, bearish MACD cross) confirms a technical breakdown below $399.83 support and $403.78 VWAP; debit spread to fib-50/BB-lower zone captures the near-term directional move with defined risk given diverged fundamental targets.",
+            "risk_note": "Technical breakdown trades can snap back quickly on beta-1.44 names; stop if price reclaims VWAP at $403.78.",
+            "manager_note": "Four technical setups aligned on breakdown \u2014 10-day window is tight so use the VWAP reclaim as a hard stop and don't let this run through the weekend unmanaged."
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "MAX_PER_UNDERLYING",
+          "reason": "PANW at 4 contracts (max 5)"
+        },
+        {
+          "fund": "options",
+          "ticker": "HCA",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "JPM",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "ORCL",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "MU",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        },
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "MAX_OPEN_CONTRACTS",
+          "reason": "book holds 20 contracts (max 20)"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-05",
+      "stock": [],
+      "options": [
+        {
+          "book": "options",
+          "underlying": "NVDA",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 220.0,
+          "expiry": "2026-07-02",
+          "dte": 28,
+          "qty": 2.0,
+          "limit_price": 2.25,
+          "premium_at_risk": 450.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 2.25,
+          "submitted_at": "2026-06-05T16:14:18.790680+00:00",
+          "rationale": "30d target of $230 is a shared convergence point across all four targets with full agreement; a 220/230 bull call spread with 28 DTE captures the full 30d thesis at 1.7:1 max reward/risk while the short leg at $230 naturally caps the position at the agreed target level.",
+          "legs": [
+            {
+              "occ_symbol": "NVDA260702C00220000",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 220.0,
+              "expiry": "2026-07-02"
+            },
+            {
+              "occ_symbol": "NVDA260702C00230000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 230.0,
+              "expiry": "2026-07-02"
+            }
+          ],
+          "reasoning": {
+            "thesis": "30d target of $230 is a shared convergence point across all four targets with full agreement; a 220/230 bull call spread with 28 DTE captures the full 30d thesis at 1.7:1 max reward/risk while the short leg at $230 naturally caps the position at the agreed target level.",
+            "risk_note": "Short leg caps gains at $230; if NVDA gaps through the target on momentum the spread leaves upside on the table \u2014 acceptable given the defined-risk structure on a growth name with beta 2.24.",
+            "manager_note": "Rare four-target consensus at $230 with low IV \u2014 cleanest risk/reward on the board today; auto-size full allocation."
+          }
+        },
+        {
+          "book": "options",
+          "underlying": "PANW",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 280.0,
+          "expiry": "2026-06-18",
+          "dte": 14,
+          "qty": 2.0,
+          "limit_price": 5.7,
+          "premium_at_risk": 1140.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 5.7,
+          "submitted_at": "2026-06-05T16:14:18.874122+00:00",
+          "rationale": "30d price target (300) and chart structural resistance (300.48) converge at the same level. Buy the 280c and sell the 300c to capture the ~10% move to that agreed level by June expiry; diverged overall target set (3/4 up, spread 33%) keeps this in spread form.",
+          "legs": [
+            {
+              "occ_symbol": "PANW260618C00280000",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 280.0,
+              "expiry": "2026-06-18"
+            },
+            {
+              "occ_symbol": "PANW260618C00300000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 300.0,
+              "expiry": "2026-06-18"
+            }
+          ],
+          "reasoning": {
+            "thesis": "90d price target at 325 calls for longer-dated exposure; buy the Aug-21 300c and sell the 320c to capture the 300\u2192325 path, with the short leg capping at an easily achievable level on the way to the fundamental target. Diverged target set warrants defined-risk spread; no earnings catalyst inside 78 DTE.",
+            "risk_note": "Spread needs price to first clear the 300\u2013303 resistance zone (52w high at 302.95); a failure to break that level before August leaves the trade largely flat; no earnings catalyst identified but verify before entry.",
+            "manager_note": "Pair this with the 14-DTE PANW spread as a ladder \u2014 if the near-term trade hits, roll proceeds into this Aug position for the continuation leg."
+          }
+        },
+        {
+          "book": "options",
+          "underlying": "MRVL",
+          "structure": "debit_call_spread",
+          "option_type": "call",
+          "strike": 310.0,
+          "expiry": "2026-06-12",
+          "dte": 8,
+          "qty": 2.0,
+          "limit_price": 2.84,
+          "premium_at_risk": 568.0,
+          "conviction": 8.0,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 2.0,
+          "filled_avg_price": 2.75,
+          "submitted_at": "2026-06-05T16:14:18.947694+00:00",
+          "rationale": "Chart is a perfect-score BUY with BB upper-band walk, supertrend intact, and all six setups aligned \u2014 momentum continuation toward the 52w high at 324.20 is the near-term path; the 310/320 spread captures that move at defined risk given elevated absolute IV levels.",
+          "legs": [
+            {
+              "occ_symbol": "MRVL260612C00310000",
+              "side": "buy",
+              "option_type": "call",
+              "strike": 310.0,
+              "expiry": "2026-06-12"
+            },
+            {
+              "occ_symbol": "MRVL260612C00320000",
+              "side": "sell",
+              "option_type": "call",
+              "strike": 320.0,
+              "expiry": "2026-06-12"
+            }
+          ],
+          "reasoning": {
+            "thesis": "Chart is a perfect-score BUY with BB upper-band walk, supertrend intact, and all six setups aligned \u2014 momentum continuation toward the 52w high at 324.20 is the near-term path; the 310/320 spread captures that move at defined risk given elevated absolute IV levels.",
+            "risk_note": "Spot is already above both fundamental targets; a tape reversal from the 52w high area would make this spread expire worthless \u2014 full debit at risk on any pullback through 314.",
+            "manager_note": "Six-setup perfect BUY with a clean $4.35 debit \u2014 stock is extended above fundamentals so treat this as a momentum-only trade and respect the 52w high as a hard exit signal."
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "fund": "options",
+          "ticker": "CRWD",
+          "reason_code": "DAILY_CAP",
+          "reason": "daily option-trade cap of 3 reached"
+        },
+        {
+          "fund": "options",
+          "ticker": "PANW",
+          "reason_code": "ILLIQUID",
+          "reason": "PANW260821C00320000: OI 829 / vol 8 / spread 5% fails liquidity floor"
+        },
+        {
+          "fund": "options",
+          "ticker": "MSFT",
+          "reason_code": "DAILY_CAP",
+          "reason": "daily option-trade cap of 3 reached"
+        },
+        {
+          "fund": "options",
+          "ticker": "LULU",
+          "reason_code": "DAILY_CAP",
+          "reason": "daily option-trade cap of 3 reached"
+        },
+        {
+          "fund": "options",
+          "ticker": "AMD",
+          "reason_code": "DAILY_CAP",
+          "reason": "daily option-trade cap of 3 reached"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-04",
+      "stock": [
+        {
+          "fund": "balanced",
+          "ticker": "MSFT",
+          "side": "buy",
+          "intent": "add",
+          "qty": 1.0,
+          "limit_price": 427.5,
+          "notional": 427.5,
+          "stop_loss": 413.0,
+          "take_profit": 500.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 1.0,
+          "filled_avg_price": 427.22,
+          "submitted_at": "2026-06-04T19:34:24.138239+00:00",
+          "rationale": "Floor conviction 7 BUY; $9.7B Pentagon contract plus $37B AI run rate; current price near entry avg, adding toward target weight within 12% cap.",
+          "reasoning": {
+            "target_reasoning": "Thesis unchanged \u2014 Pentagon contract + $37B AI run rate anchor a stable 90d fair value of $500. Price pulled back to $427.70 from prior $460.52; I KEEP prior fair values and act via conviction/stop, not by chasing the target down. Chart target $431.98 (resistance) sits near spot; 30d $460 and 90d $500 above \u2014 fundamental view weighted, divergence modest.",
+            "bullets": [
+              "$9.7B Pentagon contract plus $37B AI revenue run rate anchor durable annuity growth",
+              "Forward P/E 22.1, margin 39.3%, ROE 34%, revenue +18.3%, EPS +23.1% \u2014 premier quality",
+              "Most macro-insulated AI franchise, beta 1.09 \u2014 defensive cash flows in stagflation",
+              "Near-term chop (ADX 20, rel_volume 0.5, below MA200) is positioning noise, not thesis erosion",
+              "Stop $413 per directive; invalidated if Azure decelerates below 25%"
+            ]
+          }
+        },
+        {
+          "fund": "balanced",
+          "ticker": "META",
+          "side": "buy",
+          "intent": "add",
+          "qty": 4.0,
+          "limit_price": 624.0,
+          "notional": 2496.0,
+          "stop_loss": 548.0,
+          "take_profit": 680.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 4.0,
+          "filled_avg_price": 623.675,
+          "submitted_at": "2026-06-04T19:34:24.157899+00:00",
+          "rationale": "Floor conviction 7 BUY; forward P/E 17.3 cheapest mega-cap AI franchise; weekly directive supports hold/add; regulatory overhang limits aggression.",
+          "reasoning": {
+            "target_reasoning": "Thesis unchanged from prior call \u2014 forward P/E 17.3 dislocation on a durable franchise drives a stable 90d fair value of $720. Only price moved (now $625.50); I keep prior fair values. Chart target $618.43 (nearest support) and calc diverge below \u2014 divergence noted; I weight the 6-month fundamental reset.",
+            "bullets": [
+              "Forward P/E 17.3 vs trailing 22.8 \u2014 cheapest mega-cap AI franchise, 21% off high",
+              "Revenue +33.1%, EPS +60.9%, margin 32.8%, ROE 32.9% \u2014 top-tier quality and growth aligned",
+              "Instagram Plus subscription plus WhatsApp monetization add new non-ad revenue legs",
+              "Near-term tape is chop (ADX 16, RS -16.8% 3mo) \u2014 this is a 6-month value thesis, not momentum",
+              "Stop $548 per directive; invalidated if ad growth falls below 15% or capex shows no monetization"
+            ]
+          }
+        },
+        {
+          "fund": "aggressive",
+          "ticker": "MSFT",
+          "side": "buy",
+          "intent": "add",
+          "qty": 7.0,
+          "limit_price": 428.0,
+          "notional": 2996.0,
+          "stop_loss": 413.0,
+          "take_profit": 500.0,
+          "conviction": 7,
+          "status": "filled",
+          "outcome": "filled",
+          "filled_qty": 7.0,
+          "filled_avg_price": 427.22,
+          "submitted_at": "2026-06-04T19:34:51.368606+00:00",
+          "rationale": "Floor BUY conviction 7; $9.7B Pentagon contract plus $37B AI run rate; weekly directive names MSFT the only add without event trigger; position stays within 18% cap.",
+          "reasoning": {
+            "target_reasoning": "Thesis unchanged \u2014 Pentagon contract + $37B AI run rate anchor a stable 90d fair value of $500. Price pulled back to $427.70 from prior $460.52; I KEEP prior fair values and act via conviction/stop, not by chasing the target down. Chart target $431.98 (resistance) sits near spot; 30d $460 and 90d $500 above \u2014 fundamental view weighted, divergence modest.",
+            "bullets": [
+              "$9.7B Pentagon contract plus $37B AI revenue run rate anchor durable annuity growth",
+              "Forward P/E 22.1, margin 39.3%, ROE 34%, revenue +18.3%, EPS +23.1% \u2014 premier quality",
+              "Most macro-insulated AI franchise, beta 1.09 \u2014 defensive cash flows in stagflation",
+              "Near-term chop (ADX 20, rel_volume 0.5, below MA200) is positioning noise, not thesis erosion",
+              "Stop $413 per directive; invalidated if Azure decelerates below 25%"
+            ]
+          }
+        }
+      ],
+      "options": [],
+      "rejected": []
+    }
+  ]
+}

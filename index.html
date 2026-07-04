@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darth Yoda Wealth Management — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>try{if(localStorage.getItem('tm_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+  <script src="analytics.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-logo">DY</div>
+      <h1>Darth Yoda Wealth Management <span class="sub">Dashboard</span></h1>
+    </div>
+    <div class="meta">
+      <span><span class="live-dot"></span><span id="last-updated">—</span></span>
+      <a class="btn-ghost" href="reports.html" title="Report archive (last 30 days)">Reports ↗</a>
+      <button id="theme-btn" class="btn-ghost" title="Toggle light / dark">🌙</button>
+      <button id="refresh-btn">Refresh</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="welcome">Welcome</button>
+    <button class="tab" data-tab="stock">Stock</button>
+    <button class="tab" data-tab="options">Options</button>
+    <button class="tab" data-tab="watchlist">Watchlist</button>
+    <button class="tab" data-tab="accounts">Alpaca accounts</button>
+    <button class="tab" data-tab="trades">Daily trades</button>
+    <button class="tab" data-tab="reports">Reports</button>
+  </nav>
+
+  <main>
+    <section id="welcome" class="panel active">
+      <div class="welcome-hero">
+        <span class="welcome-eyebrow">An autonomous AI trading firm · stocks &amp; options</span>
+        <h2 class="welcome-title">A research team that never sleeps — and trades its own book.</h2>
+        <p class="welcome-lede">Darth Yoda Wealth Management runs a virtual hedge fund on a schedule. A team of AI
+          analysts picks apart every ticker, audits its own work, debates the call, and a Portfolio
+          Manager hands down a verdict. A weekly review sets the regime; an options desk turns calls
+          into trade structures; and a Chief Investment Officer executes — placing real orders on
+          <strong>Alpaca paper accounts</strong>, never with real capital.</p>
+      </div>
+
+      <div class="welcome-stats" id="welcome-stats">
+        <div class="wstat">
+          <div class="wstat-value">22</div>
+          <div class="wstat-label">AI personas</div>
+          <div class="wstat-note">A research team, an options desk &amp; weekly oversight</div>
+        </div>
+        <div class="wstat">
+          <div class="wstat-value" id="welcome-funds">3</div>
+          <div class="wstat-label">Paper accounts</div>
+          <div class="wstat-note">Two equity funds and an options book</div>
+        </div>
+        <div class="wstat">
+          <div class="wstat-value" id="welcome-equity">—</div>
+          <div class="wstat-label">Capital under management</div>
+          <div class="wstat-note" id="welcome-equity-note">Live across our Alpaca paper accounts</div>
+        </div>
+      </div>
+
+      <h3 class="welcome-h3">What the fund does, and how often</h3>
+      <div class="welcome-grid">
+        <div class="wcard">
+          <div class="wcard-tag">Every trading day</div>
+          <div class="wcard-title">The research team</div>
+          <p>A team of analysts studies each finalist — price &amp; momentum, valuation, insider flow,
+            sentiment, news, macro and risk. A devil's advocate strikes unsupported claims, a bull and
+            bear argue it out, and a Portfolio Manager decides BUY / SELL / HOLD with a conviction score.</p>
+        </div>
+        <div class="wcard">
+          <div class="wcard-tag">Every Saturday</div>
+          <div class="wcard-title">Weekly directive</div>
+          <p>The team steps back from the daily tape, grades how last week's calls actually played out,
+            and sets the week's regime and bias — what to lean into, what to avoid. It steers every
+            daily run for the week.</p>
+        </div>
+        <div class="wcard">
+          <div class="wcard-tag">Through the week</div>
+          <div class="wcard-title">The options desk</div>
+          <p>Strategists scan the universe for risk-defined option structures — long calls and puts,
+            spreads, covered calls and condors — across this-Friday, 30-day and 90-day horizons. A
+            manager ranks and publishes only the best ideas.</p>
+        </div>
+        <div class="wcard">
+          <div class="wcard-tag">Intraday &amp; weekly</div>
+          <div class="wcard-title">Chart signals</div>
+          <p>Deterministic technical passes — no LLM — scan hourly and daily bars for clean setups,
+            adding a fast, rules-based read alongside the team's judgement.</p>
+        </div>
+        <div class="wcard">
+          <div class="wcard-tag">Daily execution</div>
+          <div class="wcard-title">Autonomous trading</div>
+          <p>A Chief Investment Officer reviews the team's calls and the week's directive, then proposes
+            one daily trade plan per fund — sized by conviction and each fund's mandate. Inaction is a
+            valid day.</p>
+        </div>
+        <div class="wcard">
+          <div class="wcard-tag">Every order</div>
+          <div class="wcard-title">A deterministic safety gate</div>
+          <p>Before anything reaches the broker, a pure-code gate enforces holding periods, position and
+            sector caps, a conviction floor, a cash reserve and a daily trade cap. Any order that breaks
+            a limit is rejected and logged — never submitted.</p>
+        </div>
+      </div>
+
+      <div class="welcome-mandates">
+        <h3 class="welcome-h3">Portfolios managed</h3>
+        <div class="welcome-grid mandates">
+          <div class="wcard">
+            <div class="wcard-title">Balanced Fund</div>
+            <div class="wcard-equity"><span id="mandate-balanced-eq">—</span><span class="wcard-equity-label">account value</span></div>
+            <p>Steady compounding — a diversified book, sized by conviction.</p>
+          </div>
+          <div class="wcard">
+            <div class="wcard-title">Aggressive Fund</div>
+            <div class="wcard-equity"><span id="mandate-aggressive-eq">—</span><span class="wcard-equity-label">account value</span></div>
+            <p>Bold conviction — real size behind the best ideas, thinner cash.</p>
+          </div>
+          <div class="wcard">
+            <div class="wcard-title">Options Book</div>
+            <div class="wcard-equity"><span id="mandate-options-eq">—</span><span class="wcard-equity-label">account value</span></div>
+            <p>Defined-risk long premium — high-conviction calls and puts on a strict budget.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="welcome-foot">All trading is on Alpaca paper accounts — no real money is ever at risk.
+        Everything on this dashboard is read-only. Explore the live books, accounts and daily trades
+        in the tabs above.</p>
+    </section>
+
+    <section id="stock" class="panel">
+      <h2>Stock portfolio</h2>
+      <p class="hint">Latest fund decision per ticker — action, conviction, goal and price targets.
+        Click a column header to sort, type to filter, and click a row to expand the full thesis. Read-only.</p>
+      <div class="toolbar" id="toolbar-stock"></div>
+      <div class="table-wrap"><div id="table-stock" data-book="stock">Loading…</div></div>
+    </section>
+
+    <section id="options" class="panel">
+      <h2>Options book</h2>
+      <p class="hint">Latest published options play per ticker — the <strong>structure</strong> (type),
+        direction, conviction and defined risk. Click a row to see the legs, thesis and IV. Read-only.</p>
+      <div class="toolbar" id="toolbar-options"></div>
+      <div class="table-wrap"><div id="table-options" data-book="options">Loading…</div></div>
+    </section>
+
+    <section id="watchlist" class="panel">
+      <h2>Watchlist</h2>
+      <p class="hint">The weekly-screened universe (~200 names). Most aren't analyzed daily, so decision
+        columns are blank until a name is picked up — sector and any recent call still show.</p>
+      <div class="toolbar" id="toolbar-watchlist"></div>
+      <div class="table-wrap"><div id="table-watchlist" data-book="watchlist">Loading…</div></div>
+    </section>
+
+    <section id="accounts" class="panel">
+      <h2>Alpaca paper accounts</h2>
+      <p class="hint">Live snapshot of each paper book — equity, day P&amp;L, cash, buying power and the
+        current portfolio (open positions). Working orders aren't shown — only what the book holds.</p>
+      <div id="equity-chart-card" class="chart-card" hidden>
+        <div class="chart-head">
+          <h3>Fund equity vs S&amp;P 500</h3>
+          <div class="chart-controls">
+            <div id="equity-range" class="chips">
+              <button class="chip" data-range="1m">1M</button>
+              <button class="chip" data-range="3m">3M</button>
+              <button class="chip on" data-range="all">All</button>
+            </div>
+            <div id="equity-chart-caption" class="chart-caption"></div>
+          </div>
+        </div>
+        <div class="chart-box"><canvas id="equity-chart"></canvas></div>
+        <p class="muted-small">Each fund's account value over time, versus the same starting capital ($100k) invested in SPY.</p>
+      </div>
+      <div id="accounts-summary"></div>
+      <div id="accounts-list">Loading…</div>
+    </section>
+
+    <section id="trades" class="panel">
+      <h2>Daily trades</h2>
+      <p class="hint">Every order the executor actually placed, by day, with the <strong>reason</strong>
+        it was placed — in case you missed the Discord alerts. Click a trade to read the full thesis.
+        Gate-rejected attempts are shown too, so you can see what was deliberately <em>not</em> traded.</p>
+      <div class="toolbar" id="trades-toolbar"></div>
+      <div id="trades-days" class="day-selector"></div>
+      <div id="trades-body">Loading…</div>
+    </section>
+
+    <section id="reports" class="panel">
+      <h2>Reports</h2>
+      <p class="hint">The latest weekly review and recent daily reports.
+        <a href="reports.html">View the full 30-day archive →</a></p>
+      <div id="reports-featured"></div>
+      <div id="reports-recent"></div>
+    </section>
+  </main>
+
+  <!-- inline PDF viewer (shared with reports.html via ui.js) -->
+  <div id="pdf-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box">
+      <div class="modal-head">
+        <span class="modal-title" id="pdf-title">Report</span>
+        <span class="modal-actions">
+          <a id="pdf-download" class="btn-ghost" href="#" download>Download</a>
+          <button id="pdf-close" class="btn-ghost" data-close title="Close (Esc)">✕</button>
+        </span>
+      </div>
+      <iframe id="pdf-frame" title="Report PDF" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="ui.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
